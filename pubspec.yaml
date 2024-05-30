@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.4.0 <4.0.0'
+  sdk: '>=3.3.0 <4.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -31,7 +31,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
@@ -42,6 +41,8 @@ dependencies:
   image_picker: ^1.1.1
   permission_handler: ^11.3.1
   device_info_plus: ^10.1.0
+  shared_preferences: ^2.2.3
+  easy_localization: ^3.0.7
 
 dev_dependencies:
   flutter_test:
@@ -66,8 +67,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/lang/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -80,6 +81,25 @@ flutter:
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
+  fonts:
+    - family: ManropeLight
+      fonts:
+        - asset: assets/fonts/manrope.light.otf
+    - family: ManropeBold
+      fonts:
+        - asset: assets/fonts/manrope.bold.otf
+    - family: ManropeMedium
+      fonts:
+        - asset: assets/fonts/manrope.medium.otf
+    - family: CairoLight
+      fonts:
+        - asset: assets/fonts/Cairo-Light.ttf
+    - family: CairoMedium
+      fonts:
+        - asset: assets/fonts/Cairo-Medium.ttf
+    - family: CairoBold
+      fonts:
+        - asset: assets/fonts/Cairo-Bold.ttf
   # example:
   # fonts:
   #   - family: Schyler

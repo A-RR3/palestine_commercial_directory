@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:videos_application/modules/videos_modules/video_card.dart';
 import 'package:videos_application/modules/videos_modules/videos_cubit/videos_cubit.dart';
@@ -33,17 +32,17 @@ class VideoPlayerScreen extends StatelessWidget {
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => UploadVideoScreen(),
+                            builder: (context) => const UploadVideoScreen(),
                           ));
                     },
-                    icon: Icon(Icons.video_collection_outlined)),
+                    icon: const Icon(Icons.video_collection_outlined)),
               ],
             ),
             // Use a FutureBuilder to display a loading spinner while waiting for the
             // VideoPlayerController to finish initializing.
             // VideoCard(videoModel: videoModel, videoPlayerController: videoPlayerController)
             body: videosCubit.dataModel == null
-                ? Text('Loading')
+                ? const Text('Loading')
                 : PageView.builder(
                     scrollDirection: Axis.vertical,
                     controller: PageController(

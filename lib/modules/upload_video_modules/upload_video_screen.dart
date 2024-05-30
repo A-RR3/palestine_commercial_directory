@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:videos_application/modules/upload_video_modules/upload_video_cubit/upload_video_cubit.dart';
@@ -14,7 +13,7 @@ class UploadVideoScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add New Video'),
+        title: const Text('Add New Video'),
       ),
       body: BlocProvider(
         create: (context) => UploadVideoCubit(),
@@ -24,7 +23,7 @@ class UploadVideoScreen extends StatelessWidget {
             UploadVideoCubit uploadVideoCubit = UploadVideoCubit.get(context);
             return Column(
               children: [
-                Text('add new VID'),
+                const Text('add new VID'),
                 BlocConsumer<PermissionsCubit, PermissionsStates>(
                     listener: (context, state) {},
                     builder: (context, state) {
@@ -38,7 +37,7 @@ class UploadVideoScreen extends StatelessWidget {
                                 functionWhenGranted:
                                     uploadVideoCubit.pickVideo);
                           },
-                          child: Text('pick video'));
+                          child: const Text('pick video'));
                     }),
                 // ElevatedButton(
                 //     onPressed: () {
