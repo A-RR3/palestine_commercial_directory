@@ -1,4 +1,4 @@
-import 'package:videos_application/core/values/local_storage_keys.dart';
+import 'package:videos_application/core/values/cache_keys.dart';
 import 'package:videos_application/shared/network/local/cache_helper.dart';
 
 class Fonts {
@@ -9,7 +9,10 @@ class Fonts {
   static const cairoLight = 'CairoLight';
   static const manropeoLight = 'ManropeoLight';
 
-  static String lang = CacheHelper.getData(LocalStorageKeys.APP_LANG_KEY);
+  //Splash Screen Font
+  static const lobster = 'LobsterRegular';
+
+  static String lang = CacheHelper.getData(CacheKeys.lang.name) ?? 'en';
   static bool isEnLang = lang == "en";
 
   static String get medium => isEnLang ? manropeMedium : cairoMedium;

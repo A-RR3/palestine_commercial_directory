@@ -43,6 +43,8 @@ dependencies:
   device_info_plus: ^10.1.0
   shared_preferences: ^2.2.3
   easy_localization: ^3.0.7
+  page_transition: ^2.1.0
+  flutter_animate: ^4.5.0
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +71,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/lang/
+    - assets/images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -100,6 +103,9 @@ flutter:
     - family: CairoBold
       fonts:
         - asset: assets/fonts/Cairo-Bold.ttf
+    - family: LobsterRegular
+      fonts:
+        - asset: assets/fonts/Lobster-Regular.ttf
   # example:
   # fonts:
   #   - family: Schyler

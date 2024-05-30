@@ -18,7 +18,7 @@ class CacheHelper {
   }
 
   static bool getBool(String key) {
-    return sharedPreferences.getBool(key) ?? true;
+    return sharedPreferences.getBool(key) ?? false;
   }
 
   static dynamic getData(String key) {

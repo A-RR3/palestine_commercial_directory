@@ -1,5 +1,5 @@
 class AssetsKeys {
-  static String getImagePath(String name, {String extension = 'jpg'}) =>
+  static String getImagePath(String name, {String extension = 'png'}) =>
       'assets/$IMAGES/$name.$extension';
 
   static String getIconPath(String name, {String extension = 'svg'}) =>
@@ -11,7 +11,7 @@ class AssetsKeys {
   static const String FILES = 'files';
 
   //IMAGES KEYS
-  static const String ON_BOARDING_IMG = 'on_boarding';
+  static const String SPLASH_SCREEN_IMG = 'palcom_pink';
 
   //ICON KEYS
 }
