@@ -7,5 +7,5 @@ extension BuildContextExtentions on BuildContext {
 
   ColorScheme get colorScheme => _theme.colorScheme;
 
-  Size get screenSize => MediaQuery.sizeOf(this);
+  Size get deviceSize => MediaQuery.of(this).size;
 }

@@ -1,3 +1,14 @@
 {
-  "appName": "دليل فلسطين التجاري"
+  "appName": "دليل فلسطين التجاري",
+  "login": "تسجيل الدخول",
+  "enterPhone": "الرجاء ادخال رقم الهاتف",
+  "userPhone" : "رقم الهاتف",
+  "enterPassword": " الرجاءادخال كلمة المرور",
+  "userPassword": "كلمة المرور",
+  "openingStatement": "سجل الدخول الى دليل فلسطين التجاري",
+  "statistics": "الاحصائيات",
+  "users": "المستخدمين",
+  "companies": "الشركات",
+  "advertisements": "الاعلانات",
+  "adminPanel" : "لوحة التحكم"
 }

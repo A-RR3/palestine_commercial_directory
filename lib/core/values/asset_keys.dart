@@ -12,6 +12,7 @@ class AssetsKeys {
 
   //IMAGES KEYS
   static const String SPLASH_SCREEN_IMG = 'palcom_pink';
+  static const String LOGIN_SCREEN_IMG = 'login_background';
 
   //ICON KEYS
 }

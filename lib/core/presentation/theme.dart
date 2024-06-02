@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:videos_application/core/presentation/fonts.dart';
 
 import '../presentation/Palette.dart';
 
@@ -51,6 +52,16 @@ AppBarTheme appBarTheme(
       iconTheme: IconThemeData(color: iconColor ?? Colors.black, size: 23),
     );
 
-TextTheme get textTheme => const TextTheme(
-    bodyMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-    bodySmall: TextStyle(fontSize: 14, fontWeight: FontWeight.w500));
+TextTheme get textTheme => TextTheme(
+    bodyLarge: TextStyle(
+        fontSize: 20, fontWeight: FontWeight.w500, fontFamily: Fonts.medium),
+    bodyMedium: TextStyle(
+        fontSize: 17, fontWeight: FontWeight.w500, fontFamily: Fonts.medium),
+    bodySmall: TextStyle(
+        fontSize: 14, fontWeight: FontWeight.w500, fontFamily: Fonts.medium),
+    labelLarge: TextStyle(
+        fontSize: 25, fontWeight: FontWeight.w800, fontFamily: Fonts.bold),
+    labelSmall: TextStyle(
+        fontSize: 20, fontWeight: FontWeight.w500, fontFamily: Fonts.medium),
+    labelMedium: TextStyle(
+        fontSize: 23, fontWeight: FontWeight.w500, fontFamily: Fonts.bold));

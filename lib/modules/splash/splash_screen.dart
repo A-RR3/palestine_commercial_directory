@@ -7,7 +7,6 @@ import 'package:videos_application/core/utils/extensions.dart';
 import 'package:videos_application/core/values/asset_keys.dart';
 import 'package:videos_application/core/values/cache_keys.dart';
 import 'package:videos_application/core/values/constants.dart';
-import 'package:videos_application/modules/auth/signup/signup_screen.dart';
 import 'package:videos_application/modules/home/home_screen.dart';
 import 'package:videos_application/shared/network/local/cache_helper.dart';
 
@@ -28,10 +27,11 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
     Future.delayed(const Duration(seconds: 4), () async {
-      await Navigator.push(
+      await Navigator.pushReplacement(
         context,
         PageTransition(
-            child: isLogged ? HomeScreen() : const SignUpScreen(),
+            // child: isLogged ? LoginScreen(): HomeScreen(),
+            child: const HomeScreen(),
             type: PageTransitionType.fade,
             duration: const Duration(seconds: 1)),
       );
@@ -53,30 +53,13 @@ class _SplashScreenState extends State<SplashScreen>
     return Scaffold(
       body: Container(
         width: double.infinity,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Colors.yellowAccent,
-              Colors.pinkAccent,
-              Color(0xffD35E99),
-              Color(0xff623663),
-            ],
-            stops: [
-              0.0,
-              0.4,
-              0.8,
-              1.0,
-            ],
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
-          ),
-        ),
+        decoration: const BoxDecoration(gradient: Palette.gradientColor),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              height: context.screenSize.height * .17,
-              width: context.screenSize.width * .5,
+              height: context.deviceSize.height * .17,
+              width: context.deviceSize.width * .5,
               child: Image.asset(
                 AssetsKeys.getImagePath(AssetsKeys.SPLASH_SCREEN_IMG),
                 fit: BoxFit.fill,

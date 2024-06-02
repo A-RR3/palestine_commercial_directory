@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:dio/dio.dart';
+import '../../../core/values/constants.dart';
 import 'end_points.dart';
 
 class DioHelper {
@@ -13,11 +16,11 @@ class DioHelper {
     );
   }
 
-  static Future<Response?> getData({
-    required String url,
-    Map<String, dynamic>? query,
-    CancelToken? cancelToken,
-  }) async {
+  static Future<Response?> getData(
+      {required String url,
+      Map<String, dynamic>? query,
+      CancelToken? cancelToken,
+      String? token}) async {
     dio.options.headers = {
       'Content-Type': 'application/json',
     };
@@ -28,8 +31,8 @@ class DioHelper {
         queryParameters: query,
         options: Options(
           headers: {
-            // 'Authorization': 'Bearer $token',
-            // 'x-localization': userLocale == Locale('ar', '') ? 'ar' : 'en',
+            'Authorization': 'Bearer $token',
+            'x-localization': userLocale == const Locale('ar') ? 'ar' : 'en',
           },
         ),
         cancelToken: cancelToken,
@@ -60,7 +63,7 @@ class DioHelper {
   }) async {
     dio.options.headers = {
       'Content-Type': 'application/json',
-      // 'x-localization': userLocale == Locale('ar', '') ? 'ar' : 'en',
+      'x-localization': userLocale == const Locale('ar') ? 'ar' : 'en',
     };
     try {
       final response = await dio.post(url,
@@ -69,6 +72,7 @@ class DioHelper {
           // options: Options(headers: {'Authorization': 'Bearer $token'}),
           cancelToken: cancelToken);
       print('response is good');
+      print(response);
       return response;
     } on DioException catch (e) {
       if (e.response != null) {
