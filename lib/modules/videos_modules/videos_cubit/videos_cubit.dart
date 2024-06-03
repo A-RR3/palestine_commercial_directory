@@ -1,16 +1,17 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:video_player/video_player.dart';
 import 'package:videos_application/demo_data.dart';
-import 'package:videos_application/models/get_videos_model.dart';
-import 'package:videos_application/models/video_model.dart';
+import 'package:videos_application/models/video_models/data_model.dart';
 import 'package:videos_application/modules/videos_modules/videos_cubit/videos_states.dart';
+
+import '../../../models/video_models/video_model.dart';
 
 class VideosCubit extends Cubit<VideosStates> {
   VideosCubit() : super(VideosInitialState());
 
   static VideosCubit get(context) => BlocProvider.of(context);
 
-  GetVideosModel? getVideosModel;
+  // GetVideosModel? getVideosModel;
   DataModel? dataModel;
 
   // VideoModel? videoModel;

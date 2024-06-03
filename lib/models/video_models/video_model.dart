@@ -45,7 +45,7 @@ class VideoModel {
         "user_pic": userPic,
       };
 
-  Future<Null> loadController() async {
+  Future<void> loadController() async {
     videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(url!));
     await videoPlayerController?.initialize();
     videoPlayerController?.setLooping(true);
