@@ -1,12 +1,14 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:videos_application/shared/network/remote/dio_helper.dart';
 import 'package:videos_application/shared/network/remote/my_bloc_observer.dart';
 import 'package:videos_application/permission_cubit/permission_cubit.dart';
 
 import 'modules/videos_modules/video_player_screen.dart';
 
 void main() {
+  DioHelper.init();
   Bloc.observer = MyBlocObserver();
   runApp(const MyApp());
 }
