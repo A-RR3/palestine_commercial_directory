@@ -23,11 +23,9 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
-  bool isLogged = (CacheHelper.getBool(CacheKeys.isLogged.name));
-
   @override
   void initState() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+    // SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
     Future.delayed(const Duration(seconds: 4), () async {
       await Navigator.pushReplacement(
         context,
@@ -43,8 +41,8 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   void dispose() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive,
-        overlays: SystemUiOverlay.values);
+    // SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive,
+    //     overlays: SystemUiOverlay.values);
 
     super.dispose();
   }

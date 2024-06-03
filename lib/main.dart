@@ -26,6 +26,11 @@ void main() async {
     value: enCode,
   );
 
+  userToken = CacheHelper.getData(CacheKeys.token.name);
+  isLogged = CacheHelper.getData(CacheKeys.isLogged.name) ?? false;
+  userId = CacheHelper.getData(CacheKeys.userId.name);
+  userRole = CacheHelper.getData(CacheKeys.userRole.name);
+
   runApp(EasyLocalization(
     supportedLocales: LocalizationSettings.localesList,
     path: 'assets/lang',
