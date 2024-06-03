@@ -6,6 +6,7 @@ import 'package:videos_application/core/values/asset_keys.dart';
 import 'package:videos_application/core/values/cache_keys.dart';
 import 'package:videos_application/modules/auth/login/widgets/gradient_text_widget.dart';
 import 'package:videos_application/modules/admin/admin_screen.dart';
+import 'package:videos_application/modules/home/home_screen.dart';
 import 'package:videos_application/modules/home/owner_view.dart';
 import '../../../core/presentation/fonts.dart';
 import '../../../core/utils/navigation_services.dart';
@@ -41,29 +42,23 @@ class LoginScreen extends StatelessWidget {
                       key: CacheKeys.token.name,
                       value: state.profileModel.token!)
                   .then((value) async {
-                // userToken = CacheHelper.getData(CacheKeys.token.name);
+                userToken = state.profileModel.token!;
                 await CacheHelper.setData(
                     key: CacheKeys.isLogged.name, value: true);
-                // isLogged = CacheHelper.getData(CacheKeys.isLogged.name);
+                isLogged = true;
                 await CacheHelper.setData(
                     key: CacheKeys.userId.name,
                     value: state.profileModel.user!.id);
-                // userId = CacheHelper.getData(CacheKeys.userId.name);
+                userId = state.profileModel.user!.id;
                 await CacheHelper.setData(
                     key: CacheKeys.userRole.name,
                     value: state.profileModel.user!.role);
-                // userRole = CacheHelper.getData(CacheKeys.userRole.name);
+                userRole = state.profileModel.user!.role;
                 showToast(
                     meg: state.profileModel.message!,
                     toastState: ToastStates.success);
-                // NavigationServices.navigateTo(
-                //     context,
-                //     state.profileModel.user?.role == 1
-                //         ? const AdminPanel()
-                //         : CompanyOwnerView(
-                //             userId: userId,
-                //           ),
-                //     removeAll: true);
+                NavigationServices.navigateTo(context, HomeScreen(),
+                    removeAll: true);
               });
             } else {
               showToast(

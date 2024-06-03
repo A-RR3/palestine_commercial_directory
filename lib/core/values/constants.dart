@@ -4,15 +4,10 @@ import '../../shared/network/local/cache_helper.dart';
 import '../presentation/Palette.dart';
 import 'cache_keys.dart';
 
-// String? userToken;
-// int? userId;
-// int? userRole;
-// bool isLogged = false;
-
-String? userToken = CacheHelper.getData(CacheKeys.token.name);
-bool isLogged = CacheHelper.getData(CacheKeys.isLogged.name) ?? false;
-int? userId = CacheHelper.getData(CacheKeys.userId.name);
-int? userRole = CacheHelper.getData(CacheKeys.userRole.name);
+String? userToken;
+int? userId;
+int? userRole;
+bool isLogged = false;
 
 Locale userLocale =
     CacheHelper.getData(CacheKeys.lang.name) ?? const Locale(enCode);
