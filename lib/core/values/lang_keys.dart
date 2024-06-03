@@ -18,4 +18,7 @@ class LangKeys {
   static const String ADVERTISMENTS = "advertisments";
   static const String STATISTICS = "statistics";
   static const String ADMIN_PANEL = "adminPanel";
+
+  // Drawer
+  static const String DRAWER_VIDEOS = 'drawer_videos';
 }

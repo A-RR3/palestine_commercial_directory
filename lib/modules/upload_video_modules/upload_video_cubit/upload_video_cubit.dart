@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:videos_application/core/utils/mixins/compress_video_mixin.dart';
 import 'package:videos_application/models/video_models/upload_video_model.dart';
 import 'package:videos_application/modules/upload_video_modules/upload_video_cubit/upload_video_states.dart';
 import 'package:videos_application/shared/network/remote/dio_helper.dart';
@@ -11,7 +12,8 @@ import 'package:videos_application/shared/network/remote/end_points.dart';
 
 // may convert to mixin
 
-class UploadVideoCubit extends Cubit<UploadVideoStates> {
+class UploadVideoCubit extends Cubit<UploadVideoStates>
+    with CompressVideoMixin<UploadVideoStates> {
   UploadVideoCubit() : super(UploadVideoInitialState());
 
   static UploadVideoCubit get(context) => BlocProvider.of(context);
@@ -20,6 +22,7 @@ class UploadVideoCubit extends Cubit<UploadVideoStates> {
   // UploadVideoErrorState
 
   GlobalKey<FormState> addPostFormKey = GlobalKey<FormState>();
+
   TextEditingController titleController = TextEditingController();
   TextEditingController contentController = TextEditingController();
 
@@ -54,6 +57,7 @@ class UploadVideoCubit extends Cubit<UploadVideoStates> {
       'content': content,
       'user_id': 1,
     });
+
     DioHelper.postData(url: EndPointsConstants.post, data: formData)
         .then((value) {
       print(value?.data);
@@ -63,5 +67,12 @@ class UploadVideoCubit extends Cubit<UploadVideoStates> {
       emit(UploadVideoErrorState(error: error.toString()));
       print(error.toString());
     });
+  }
+
+  @override
+  Future<void> close() {
+    titleController.dispose();
+    contentController.dispose();
+    return super.close();
   }
 }

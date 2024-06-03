@@ -5,6 +5,7 @@ import 'package:videos_application/core/utils/extensions.dart';
 import 'package:videos_application/core/utils/navigation_services.dart';
 import 'package:videos_application/modules/admin/cubit/admin_cubit.dart';
 import 'package:videos_application/modules/admin/cubit/states.dart';
+import 'package:videos_application/shared/widgets/custom_drawer.dart';
 import '../../core/presentation/Palette.dart';
 import '../../core/values/lang_keys.dart';
 
@@ -28,6 +29,7 @@ class AdminPanel extends StatelessWidget {
         return SafeArea(
           child: Scaffold(
             backgroundColor: const Color(0xffEDF8F9),
+            drawer: CustomDrawer(),
             appBar: AppBar(
               title: Text(LangKeys.ADMIN_PANEL.tr()),
               backgroundColor: Palette.primaryColor,
