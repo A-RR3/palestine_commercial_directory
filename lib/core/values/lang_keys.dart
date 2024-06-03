@@ -3,6 +3,7 @@ class LangKeys {
 
   //LOGIN SCREEN KEYS
   static const String LOGIN = "login";
+  static const String LOGOUT = "logout";
   static const String OPENING_STATEMENT = "openingStatement";
   static const String ENTER_PHONE = "enterPhone";
   static const String USER_PHONE = "userPhone";

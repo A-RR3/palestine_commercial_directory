@@ -20,14 +20,14 @@ class LoginModel {
 }
 
 class UserData {
-  final int? id;
+  final int id;
   final String? name;
   final String? phone;
   final int? role;
   final int? status;
 
   UserData(
-      {this.id,
+      {required this.id,
       required this.name,
       required this.phone,
       this.role,

@@ -11,6 +11,8 @@ import 'package:videos_application/modules/home/home_screen.dart';
 import 'package:videos_application/shared/network/local/cache_helper.dart';
 
 import '../../core/presentation/fonts.dart';
+import '../admin/admin_screen.dart';
+import '../home/owner_view.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -30,8 +32,7 @@ class _SplashScreenState extends State<SplashScreen>
       await Navigator.pushReplacement(
         context,
         PageTransition(
-            // child: isLogged ? LoginScreen(): HomeScreen(),
-            child: const HomeScreen(),
+            child: HomeScreen(),
             type: PageTransitionType.fade,
             duration: const Duration(seconds: 1)),
       );
