@@ -1,4 +1,3 @@
-
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -41,7 +40,9 @@ class UploadVideoScreen extends StatelessWidget {
                         return null;
                       },
                     ),
-                    SizedBox(height: 10,),
+                    SizedBox(
+                      height: 10,
+                    ),
                     MyTextFormField(
                       label: 'content',
                       controller: uploadVideoCubit.contentController,
@@ -58,12 +59,19 @@ class UploadVideoScreen extends StatelessWidget {
                           PermissionsCubit permissionCubit =
                               PermissionsCubit.get(context);
                           return TextButton(
-                              onPressed: () {
-                                permissionCubit.requestPermission(
-                                    context: context,
-                                    permissionType: PermissionType.video,
-                                    functionWhenGranted:
-                                        uploadVideoCubit.pickVideo);
+                              onPressed: () async {
+                                await permissionCubit.requestPermission(
+                                  context: context,
+                                  permissionType: PermissionType.video,
+                                  functionWhenGranted:
+                                      uploadVideoCubit.pickVideo,
+                                );
+                                print('before compress');
+                                if (uploadVideoCubit.video != null) {
+                                  uploadVideoCubit.compressVideo(
+                                      uploadVideoCubit.video!.path);
+                                }
+                                print('after conmpress');
                               },
                               child: Text('pick video'));
                         }),
@@ -74,9 +82,13 @@ class UploadVideoScreen extends StatelessWidget {
                           uploadVideoCubit.addVideo(
                             title: uploadVideoCubit.titleController.text,
                             content: uploadVideoCubit.contentController.text,
-                            videoFile: uploadVideoCubit.video != null
-                                ? File(uploadVideoCubit.video!.path)
+                            videoFile:
+                            uploadVideoCubit.mediaInfo != null
+                                ? File(uploadVideoCubit.mediaInfo!.path!)
                                 : null,
+                            // uploadVideoCubit.video != null
+                            //     ? File(uploadVideoCubit.video!.path)
+                            //     : null,
                           );
                         }
                       },
