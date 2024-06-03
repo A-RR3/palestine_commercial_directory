@@ -1,0 +1,15 @@
+{
+  "appName" : "Palestine Commercial Directory",
+  "login": "Login",
+  "enterPhone": "Please enter your phone number",
+  "userPhone" : "Phone number",
+  "enterPassword": "Please enter your password",
+  "userPassword": "Password",
+  "openingStatement": "Log into Palcom",
+  "statistics": "Statistics",
+  "users": "Users",
+  "companies": "Companies",
+  "advertisements": "Advertisements",
+  "adminPanel" : "Admin Panel"
+
+}

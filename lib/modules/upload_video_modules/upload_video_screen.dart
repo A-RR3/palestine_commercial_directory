@@ -1,6 +1,5 @@
-import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:videos_application/modules/upload_video_modules/upload_video_cubit/upload_video_cubit.dart';
@@ -17,7 +16,7 @@ class UploadVideoScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add New Video'),
+        title: const Text('Add New Video'),
       ),
       body: BlocProvider(
         create: (context) => UploadVideoCubit(),

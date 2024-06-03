@@ -23,7 +23,7 @@ class PermissionsCubit extends Cubit<PermissionsStates> {
   }) async {
     permissionStatus = null;
     print('requestPermission');
-    print('permissionType: ${permissionType}');
+    print('permissionType: $permissionType');
     switch (permissionType) {
       case PermissionType.photo:
       case PermissionType.video:
@@ -50,7 +50,7 @@ class PermissionsCubit extends Cubit<PermissionsStates> {
         break;
     }
 
-    print('permissionStatus: ${permissionStatus}');
+    print('permissionStatus: $permissionStatus');
     print('isPermanentlyDenied: ${permissionStatus?.isPermanentlyDenied}');
 
     if (permissionStatus?.isGranted == true) {
@@ -72,25 +72,25 @@ class PermissionsCubit extends Cubit<PermissionsStates> {
     return showDialog(
       context: context,
       builder: (BuildContext context) => AlertDialog(
-        title: Text("permission_denied"),
+        title: const Text("permission_denied"),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text("permission_needed"),
+            const Text("permission_needed"),
             TextButton(
               onPressed: () {
                 // openAppSettings();
                 Navigator.of(context).pop();
                 openAppSettings();
               },
-              child: Text('permission_go_to_settings'),
+              child: const Text('permission_go_to_settings'),
             )
           ],
         ),
         actions: <Widget>[
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: Text("exit"),
+            child: const Text("exit"),
           ),
         ],
       ),
