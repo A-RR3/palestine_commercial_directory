@@ -13,13 +13,32 @@ class AdminCubit extends Cubit<AdminStates> {
   static AdminCubit get(context) => BlocProvider.of(context);
 
   List screens = [const UsersScreen(), const CompaniesScreen()];
+  List<User> users = [];
+  int page = 1;
+  int perPage = 7;
+  bool hasMore = true;
+  bool isLastPage = false;
+
+  void fetchIfHasData(void callback) {
+    hasMore ? callback : null;
+  }
 
   late UserModel userModel;
 
   void getUsersData() {
     emit(UsersLoadingState());
-    DioHelper.getData(url: USERS, token: userToken).then((response) {
+    DioHelper.getData(
+        url: USERS,
+        token: userToken,
+        query: {"per_page": perPage, "page": page}).then((response) {
       userModel = UserModel?.fromJson(response?.data);
+      page++;
+      users.addAll(userModel.users!);
+      if (userModel.pagination!.currentPage ==
+          userModel.pagination!.lastPage) {
+        isLastPage = true;
+        hasMore = false;
+      }
       emit(UsersSuccessState(userModel));
     }).catchError((error) {
       emit(UsersErrorState());

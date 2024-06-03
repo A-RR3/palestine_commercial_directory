@@ -9,6 +9,7 @@ import 'package:videos_application/shared/network/remote/my_bloc_observer.dart';
 import 'core/presentation/theme.dart';
 import 'core/values/cache_keys.dart';
 import 'core/values/constants.dart';
+import 'modules/admin/cubit/admin_cubit.dart';
 import 'shared/network/local/cache_helper.dart';
 import 'shared/network/remote/dio_helper.dart';
 
@@ -43,6 +44,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => PermissionsCubit(),
         ),
+        BlocProvider(
+          create: (context) => AdminCubit()..getUsersData(),
+        )
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

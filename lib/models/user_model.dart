@@ -1,35 +1,45 @@
-import 'dart:convert';
+import 'dart:ui';
 
-UserModel userModelFromJson(String str) => UserModel.fromJson(json.decode(str));
-
-String userModelToJson(UserModel data) => json.encode(data.toJson());
+import 'package:videos_application/core/values/constants.dart';
 
 class UserModel {
-  final int? currentPage;
-  final int? lastPage;
+  final int? status;
   final List<User>? users;
+  final Pagination? pagination;
 
   UserModel({
-    this.currentPage,
-    this.lastPage,
+    this.status,
     this.users,
+    this.pagination,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
-        currentPage: json["current_page"],
-        lastPage: json["last_page"],
+        status: json["status"],
         users: json["users"] == null
             ? []
             : List<User>.from(json["users"]!.map((x) => User.fromJson(x))),
+        pagination: json["pagination"] == null
+            ? null
+            : Pagination.fromJson(json["pagination"]),
       );
+}
 
-  Map<String, dynamic> toJson() => {
-        "current_page": currentPage,
-        "last_page": lastPage,
-        "users": users == null
-            ? []
-            : List<dynamic>.from(users!.map((x) => x.toJson())),
-      };
+class Pagination {
+  final int? currentPage;
+  final int? lastPage;
+  final int? perPage;
+
+  Pagination({
+    this.currentPage,
+    this.lastPage,
+    this.perPage,
+  });
+
+  factory Pagination.fromJson(Map<String, dynamic> json) => Pagination(
+        currentPage: json["current_page"],
+        lastPage: json["last_page"],
+        perPage: json["per_page"],
+      );
 }
 
 class User {
@@ -43,50 +53,30 @@ class User {
   final int? companiesCount;
   final List<Company>? companies;
 
-  User({
-    this.uId,
-    this.uName,
-    this.uPhone,
-    this.uRoleId,
-    this.uStatus,
-    this.createdAt,
-    this.updatedAt,
-    this.companiesCount,
-    this.companies,
-  });
+  User(
+      {this.uId,
+      this.uName,
+      this.uPhone,
+      this.uRoleId,
+      this.uStatus,
+      this.createdAt,
+      this.updatedAt,
+      this.companiesCount,
+      this.companies});
 
   factory User.fromJson(Map<String, dynamic> json) => User(
-        uId: json["u_id"],
-        uName: json["u_name"],
-        uPhone: json["u_phone"],
-        uRoleId: json["u_role_id"],
-        uStatus: json["u_status"],
-        createdAt: json["created_at"] == null
-            ? null
-            : DateTime.parse(json["created_at"]),
-        updatedAt: json["updated_at"] == null
-            ? null
-            : DateTime.parse(json["updated_at"]),
-        companiesCount: json["companies_count"],
-        companies: json["companies"] == null
-            ? []
-            : List<Company>.from(
-                json["companies"]!.map((x) => Company.fromJson(x))),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "u_id": uId,
-        "u_name": uName,
-        "u_phone": uPhone,
-        "u_role_id": uRoleId,
-        "u_status": uStatus,
-        "created_at": createdAt?.toIso8601String(),
-        "updated_at": updatedAt?.toIso8601String(),
-        "companies_count": companiesCount,
-        "companies": companies == null
-            ? []
-            : List<dynamic>.from(companies!.map((x) => x.toJson())),
-      };
+      uId: json["u_id"],
+      uName: userLocale == const Locale('en') ? json["u_name"] : json["u_name_ar"],
+      uPhone: json["u_phone"],
+      uRoleId: json["u_role_id"],
+      uStatus: json["u_status"],
+      createdAt: DateTime.parse(json["created_at"]),
+      updatedAt: DateTime.parse(json["updated_at"]),
+      companiesCount: json["companies_count"],
+      companies: json["companies"] == null
+          ? []
+          : List<Company>.from(
+              json["companies"]!.map((x) => Company.fromJson(x))));
 }
 
 class Company {
@@ -94,25 +84,14 @@ class Company {
   final int? cOwnerId;
   final String? cName;
   final String? cPhone;
+  final String? image;
 
-  Company({
-    this.cId,
-    this.cOwnerId,
-    this.cName,
-    this.cPhone,
-  });
+  Company({this.cId, this.cOwnerId, this.cName, this.cPhone, this.image});
 
   factory Company.fromJson(Map<String, dynamic> json) => Company(
-        cId: json["c_id"],
-        cOwnerId: json["c_owner_id"],
-        cName: json["c_name"],
-        cPhone: json["c_phone"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "c_id": cId,
-        "c_owner_id": cOwnerId,
-        "c_name": cName,
-        "c_phone": cPhone,
-      };
+      cId: json["c_id"],
+      cOwnerId: json["c_owner_id"],
+      cName: userLocale == const Locale('en') ? json["c_name"] : json["c_name_ar"],
+      cPhone: json["c_phone"],
+      image: json["c_image"]);
 }

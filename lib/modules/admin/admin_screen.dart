@@ -20,60 +20,59 @@ class AdminPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-        create: (context) => AdminCubit()..getUsersData(),
-        child: BlocConsumer<AdminCubit, AdminStates>(
-          listener: (context, state) {},
-          builder: (context, state) {
-            AdminCubit cubit = AdminCubit.get(context);
+    return BlocConsumer<AdminCubit, AdminStates>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        AdminCubit cubit = AdminCubit.get(context);
 
-            return SafeArea(
-              child: Scaffold(
-                backgroundColor: const Color(0xffEDF8F9),
-                appBar: AppBar(
-                  title: Text(LangKeys.ADMIN_PANEL.tr()),
-                  backgroundColor: Palette.primaryColor,
-                  bottomOpacity: 20,
-                  elevation: 5,
-                ),
-                body: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 20),
-                    child: GridView.count(
-                      crossAxisSpacing: 20,
-                      mainAxisSpacing: 20,
-                      crossAxisCount: 2,
-                      children: List.generate(adminOptions.length, (index) {
-                        return GestureDetector(
-                          onTap: () {
-                            NavigationServices.navigateTo(
-                                context, cubit.screens[index]);
-                          },
-                          child: Card(
-                            // color: Palette.primaryColor,
-                            elevation: 4.0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                            ),
-                            child: Center(
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 16.0, horizontal: 10),
-                                child: Text(
-                                  adminOptions[index],
-                                  style: context.textTheme.bodyLarge,
-                                ),
-                              ),
+        return SafeArea(
+          child: Scaffold(
+            backgroundColor: const Color(0xffEDF8F9),
+            appBar: AppBar(
+              title: Text(LangKeys.ADMIN_PANEL.tr()),
+              backgroundColor: Palette.primaryColor,
+              bottomOpacity: 20,
+              elevation: 5,
+            ),
+            body: Center(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 8, vertical: 20),
+                child: GridView.count(
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20,
+                  crossAxisCount: 2,
+                  children: List.generate(adminOptions.length, (index) {
+                    return GestureDetector(
+                      onTap: () {
+                        NavigationServices.navigateTo(
+                            context, cubit.screens[index]);
+                      },
+                      child: Card(
+                        // color: Palette.primaryColor,
+                        elevation: 4.0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 16.0, horizontal: 10),
+                            child: Text(
+                              adminOptions[index],
+                              style: context.textTheme.bodyLarge,
                             ),
                           ),
-                        );
-                      }),
-                    ),
-                  ),
+                        ),
+                      ),
+                    );
+                  }),
                 ),
               ),
-            );
-          },
-        ));
+            ),
+          ),
+        );
+      },
+    );
   }
 }
