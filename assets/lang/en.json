@@ -10,6 +10,11 @@
   "users": "Users",
   "companies": "Companies",
   "advertisements": "Advertisements",
-  "adminPanel" : "Admin Panel"
+  "adminPanel" : "Admin Panel",
+
+  "_comment": "drawer",
+  "drawer_videos": "videos",
+
+  "_comment": "videos"
 
 }
