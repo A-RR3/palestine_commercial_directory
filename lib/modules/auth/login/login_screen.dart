@@ -36,20 +36,34 @@ class LoginScreen extends StatelessWidget {
           if (state is LoginSuccessState) {
             if (state.profileModel.status) {
               print(state.profileModel.token!);
+
               CacheHelper.setData(
                       key: CacheKeys.token.name,
                       value: state.profileModel.token!)
-                  .then((value) {
-                userToken = CacheHelper.getData(CacheKeys.token.name);
+                  .then((value) async {
+                // userToken = CacheHelper.getData(CacheKeys.token.name);
+                await CacheHelper.setData(
+                    key: CacheKeys.isLogged.name, value: true);
+                // isLogged = CacheHelper.getData(CacheKeys.isLogged.name);
+                await CacheHelper.setData(
+                    key: CacheKeys.userId.name,
+                    value: state.profileModel.user!.id);
+                // userId = CacheHelper.getData(CacheKeys.userId.name);
+                await CacheHelper.setData(
+                    key: CacheKeys.userRole.name,
+                    value: state.profileModel.user!.role);
+                // userRole = CacheHelper.getData(CacheKeys.userRole.name);
                 showToast(
                     meg: state.profileModel.message!,
                     toastState: ToastStates.success);
-                NavigationServices.navigateTo(
-                    context,
-                    state.profileModel.user?.role == 1
-                        ? const AdminPanel()
-                        : const CompanyOwnerView(),
-                    removeAll: true);
+                // NavigationServices.navigateTo(
+                //     context,
+                //     state.profileModel.user?.role == 1
+                //         ? const AdminPanel()
+                //         : CompanyOwnerView(
+                //             userId: userId,
+                //           ),
+                //     removeAll: true);
               });
             } else {
               showToast(

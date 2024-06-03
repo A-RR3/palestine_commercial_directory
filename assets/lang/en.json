@@ -10,6 +10,7 @@
   "users": "Users",
   "companies": "Companies",
   "advertisements": "Advertisements",
-  "adminPanel" : "Admin Panel"
+  "adminPanel" : "Admin Panel",
+  "logout": "Logout"
 
 }

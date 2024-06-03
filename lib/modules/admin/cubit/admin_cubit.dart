@@ -12,7 +12,7 @@ class AdminCubit extends Cubit<AdminStates> {
 
   static AdminCubit get(context) => BlocProvider.of(context);
 
-  List screens = [const UsersScreen(), const CompaniesScreen()];
+  List screens = [UsersScreen(), const CompaniesScreen()];
   List<User> users = [];
   int page = 1;
   int perPage = 7;
@@ -34,8 +34,7 @@ class AdminCubit extends Cubit<AdminStates> {
       userModel = UserModel?.fromJson(response?.data);
       page++;
       users.addAll(userModel.users!);
-      if (userModel.pagination!.currentPage ==
-          userModel.pagination!.lastPage) {
+      if (userModel.pagination!.currentPage == userModel.pagination!.lastPage) {
         isLastPage = true;
         hasMore = false;
       }

@@ -10,5 +10,7 @@
   "users": "المستخدمين",
   "companies": "الشركات",
   "advertisements": "الاعلانات",
-  "adminPanel" : "لوحة التحكم"
+  "adminPanel" : "لوحة التحكم",
+  "logout": "تسجيل الخروج"
+
 }
