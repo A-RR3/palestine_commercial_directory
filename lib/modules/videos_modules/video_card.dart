@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
-import 'package:videos_application/models/video_model.dart';
 import 'package:videos_application/modules/videos_modules/videos_cubit/videos_cubit.dart';
+
+import '../../models/video_models/video_model.dart';
 
 class VideoCard extends StatefulWidget {
   final VideoModel videoModel;

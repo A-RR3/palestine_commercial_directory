@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:videos_application/permission_cubit/permission_states.dart';
 
-
 // convert to mixin
 // in utils/mixins folder
 
@@ -32,15 +31,13 @@ class PermissionsCubit extends Cubit<PermissionsStates> {
         if (deviceInfo.version.sdkInt > 32) {
           // Android version is greater than 32 (Android 13 or higher)
           // permissionStatus = await Permission.manageExternalStorage.request();
-          // if (permissionType == PermissionType.photo) {
+          if (permissionType == PermissionType.photo) {
             permissionStatus = await Permission.photos.request();
-            // print('photo');
-          // }
-          // else if (permissionType == PermissionType.video) {
-          //   permissionStatus = await Permission.videos.request();
-          //   print('video');
-          //
-          // }
+            print('photo');
+          } else if (permissionType == PermissionType.video) {
+            permissionStatus = await Permission.videos.request();
+            print('video');
+          }
           print('storage permission requested for > 32');
         } else {
           permissionStatus = await Permission.storage.request();

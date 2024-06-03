@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:videos_application/core/localization/localization_settings.dart';
 import 'package:videos_application/modules/auth/login/login_screen.dart';
+import 'package:videos_application/shared/network/remote/dio_helper.dart';
 import 'package:videos_application/permission_cubit/permission_cubit.dart';
 import 'package:videos_application/shared/network/remote/my_bloc_observer.dart';
 
@@ -15,8 +16,8 @@ import 'shared/network/remote/dio_helper.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Bloc.observer = MyBlocObserver();
   DioHelper.init();
+  Bloc.observer = MyBlocObserver();
   await CacheHelper.init();
   userLocale = Locale(LocalizationSettings.defaultLanguage);
   CacheHelper.setData(
