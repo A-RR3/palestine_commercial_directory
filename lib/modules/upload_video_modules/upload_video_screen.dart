@@ -50,78 +50,109 @@ class UploadVideoScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                body: Form(
-                  key: uploadVideoCubit.addPostFormKey,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                body: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Form(
+                    key: uploadVideoCubit.addPostFormKey,
+                    child: ListView(
                       children: [
-                        MyTextFormField(
-                          label: LangKeys.ADD_VIDEO_TITLE_FIELD.tr(),
-                          controller: uploadVideoCubit.titleController,
-                          textInputAction: TextInputAction.next,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return LangKeys.ADD_VIDEO_TITLE_FIELD_REQUIRED
-                                  .tr();
-                            }
-                            return null;
-                          },
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        MyTextFormField(
-                          label: LangKeys.ADD_VIDEO_CONTENT_FIELD.tr(),
-                          controller: uploadVideoCubit.contentController,
-                          textInputAction: TextInputAction.done,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return LangKeys.ADD_VIDEO_CONTENT_FIELD_REQUIRED
-                                  .tr();
-                            }
-                            return null;
-                          },
-                        ),
-                        Row(
-                          children: [
-                            BlocConsumer<PermissionsCubit, PermissionsStates>(
-                                listener: (context, state) {},
-                                builder: (context, state) {
-                                  PermissionsCubit permissionCubit =
-                                      PermissionsCubit.get(context);
-                                  return TextButton(
-                                    onPressed: () async {
-                                      await permissionCubit.requestPermission(
-                                        context: context,
-                                        permissionType: PermissionType.video,
-                                        functionWhenGranted:
-                                            uploadVideoCubit.pickVideo,
+                        Card(
+                          elevation: 4,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                MyTextFormField(
+                                  label: LangKeys.ADD_VIDEO_TITLE_FIELD.tr(),
+                                  controller: uploadVideoCubit.titleController,
+                                  textInputAction: TextInputAction.next,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return LangKeys
+                                          .ADD_VIDEO_TITLE_FIELD_REQUIRED
+                                          .tr();
+                                    }
+                                    return null;
+                                  },
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                MyTextFormField(
+                                  label: LangKeys.ADD_VIDEO_CONTENT_FIELD.tr(),
+                                  controller:
+                                      uploadVideoCubit.contentController,
+                                  textInputAction: TextInputAction.done,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return LangKeys
+                                          .ADD_VIDEO_CONTENT_FIELD_REQUIRED
+                                          .tr();
+                                    }
+                                    return null;
+                                  },
+                                ),
+                                SizedBox(
+                                  height: 16,
+                                ),
+                                BlocConsumer<PermissionsCubit,
+                                        PermissionsStates>(
+                                    listener: (context, state) {},
+                                    builder: (context, state) {
+                                      PermissionsCubit permissionCubit =
+                                          PermissionsCubit.get(context);
+                                      return ElevatedButton.icon(
+                                        onPressed: () async {
+                                          await permissionCubit
+                                              .requestPermission(
+                                            context: context,
+                                            permissionType:
+                                                PermissionType.video,
+                                            functionWhenGranted:
+                                                uploadVideoCubit.pickVideo,
+                                          );
+                                        },
+                                        icon: Icon(Icons.video_library),
+                                        label: Text(LangKeys
+                                            .ADD_VIDEO_PICK_VIDEO_BUTTON
+                                            .tr()),
+                                        style: ElevatedButton.styleFrom(
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      10)),
+                                        ),
                                       );
-                                    },
-                                    child: Text(LangKeys
-                                        .ADD_VIDEO_PICK_VIDEO_BUTTON
-                                        .tr()),
-                                  );
-                                }),
-                            Text(
-                              uploadVideoCubit.video == null
-                                  ? ''
-                                  : uploadVideoCubit.video!.name,
+                                    }),
+                                SizedBox(height: 8,),
+                                Text(
+                                  uploadVideoCubit.video == null
+                                      ? ''
+                                      : uploadVideoCubit.video!.name,
+                                  style: TextStyle(color: Colors.grey),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
+                        SizedBox(height: 16),
                         ElevatedButton(
                           onPressed: () {
-                            if (uploadVideoCubit.addPostFormKey.currentState!
+                            if (uploadVideoCubit
+                                .addPostFormKey.currentState!
                                 .validate()) {
                               uploadVideoCubit.addVideo(
-                                title: uploadVideoCubit.titleController.text,
-                                content:
-                                    uploadVideoCubit.contentController.text,
-                                videoFile: uploadVideoCubit.mediaInfo != null
-                                    ? File(uploadVideoCubit.mediaInfo!.path!)
+                                title: uploadVideoCubit
+                                    .titleController.text,
+                                content: uploadVideoCubit
+                                    .contentController.text,
+                                videoFile:
+                                uploadVideoCubit.mediaInfo != null
+                                    ? File(uploadVideoCubit
+                                    .mediaInfo!.path!)
                                     : null,
                                 // uploadVideoCubit.video != null
                                 //     ? File(uploadVideoCubit.video!.path)
@@ -129,7 +160,13 @@ class UploadVideoScreen extends StatelessWidget {
                               );
                             }
                           },
-                          child: Text(LangKeys.ADD_VIDEO_ADD_VIDEO_BUTTON.tr()),
+                          child: Text(
+                              LangKeys.ADD_VIDEO_ADD_VIDEO_BUTTON.tr()),
+                          style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.symmetric(vertical: 8),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                          ),
                         ),
                       ],
                     ),

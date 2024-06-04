@@ -35,7 +35,12 @@ class VideoPlayerScreen extends StatelessWidget {
               ],
             ),
             body: videosCubit.getVideosModel == null
-                ? const CircularProgressIndicator()
+                ? Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Center(child: const CircularProgressIndicator()),
+                    ],
+                  )
                 : PageView.builder(
                     scrollDirection: Axis.vertical,
                     controller: PageController(
