@@ -17,7 +17,7 @@ class VideoPlayerScreen extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           VideosCubit videosCubit = VideosCubit.get(context);
-          print(videosCubit.dataModel!.videos!.length);
+          // print(videosCubit.getVideosModel!.videos!.length);
 
           return Scaffold(
             appBar: AppBar(
@@ -34,7 +34,7 @@ class VideoPlayerScreen extends StatelessWidget {
                 //     icon: const Icon(Icons.video_collection_outlined)),
               ],
             ),
-            body: videosCubit.dataModel == null
+            body: videosCubit.getVideosModel == null
                 ? const Text('Loading')
                 : PageView.builder(
                     scrollDirection: Axis.vertical,
@@ -49,9 +49,9 @@ class VideoPlayerScreen extends StatelessWidget {
                     // },
                     itemBuilder: (context, index) => VideoCard(
                       videosCubit: videosCubit,
-                      videoModel: videosCubit.dataModel!.videos![index],
+                      postModel: videosCubit.getVideosModel!.videos![index],
                     ),
-                    itemCount: videosCubit.dataModel!.videos!.length,
+                    itemCount: videosCubit.getVideosModel!.videos!.length,
                   ),
           );
         },

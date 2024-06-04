@@ -6,7 +6,10 @@ class GetVideosLoadingState extends VideosStates {}
 
 class GetVideosSuccessState extends VideosStates {}
 
-class GetVideosErrorState extends VideosStates {}
+class GetVideosErrorState extends VideosStates {
+  final String error;
+  GetVideosErrorState({required this.error});
+}
 
 class LoadControllerStartState extends VideosStates {}
 

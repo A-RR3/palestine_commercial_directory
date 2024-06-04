@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
+import 'package:videos_application/models/basic_models/post_model.dart';
 import 'package:videos_application/modules/videos_modules/videos_cubit/videos_cubit.dart';
 
 import '../../models/video_models/video_model.dart';
 
 class VideoCard extends StatefulWidget {
-  final VideoModel videoModel;
+  final PostModel postModel;
   final VideosCubit videosCubit;
 
   VideoCard({
     super.key,
-    required this.videoModel,
+    required this.postModel,
     required this.videosCubit,
   });
 
@@ -30,7 +31,7 @@ class _VideoCardState extends State<VideoCard> {
     //   videoPlayerController: videoPlayerController,
     // );
     widget.videosCubit.loadController(
-      videoModel: widget.videoModel,
+      postModel: widget.postModel,
       onControllerLoaded: (controller) {
         setState(() {
           videoPlayerController = controller;
@@ -74,24 +75,23 @@ class _VideoCardState extends State<VideoCard> {
                     child: FittedBox(
                   fit: BoxFit.cover,
                   child: SizedBox(
-                    width: videoPlayerController!.value.size.width ,
+                    width: videoPlayerController!.value.size.width,
                     height: videoPlayerController!.value.size.height,
                     child: VideoPlayer(videoPlayerController!),
                   ),
                 )),
               )
             : GestureDetector(
-          onTap: (){
-
-            widget.videosCubit.newState();
-          },
-              child: Container(
-                  color: Colors.pink,
+                onTap: () {
+                  widget.videosCubit.newState();
+                },
+                child: Container(
+                  color: Colors.white,
                   child: const Center(
                     child: Text("Loading"),
                   ),
                 ),
-            ),
+              ),
         // TextButton(
         //     onPressed: () {
         //       widget.videosCubit.newState();

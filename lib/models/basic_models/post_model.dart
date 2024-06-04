@@ -2,7 +2,7 @@ class PostModel {
   final int? pId;
   final String? pTitle;
   final String? pContent;
-  final String? pUserId;
+  final int? pUserId;
   final String? pVideo;
   final String? pImage;
   final String? pType;

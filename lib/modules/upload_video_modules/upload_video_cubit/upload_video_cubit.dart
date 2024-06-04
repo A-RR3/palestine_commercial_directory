@@ -52,14 +52,14 @@ class UploadVideoCubit extends Cubit<UploadVideoStates>
   UploadVideoModel? uploadVideoModel;
 
   Future<void> addVideo(
-      {File? videoFile, required String title, required String content}) async {
+      {File? videoFile, required String title, required String content, int userId = 1}) async {
     emit(UploadVideoLoadingState());
     FormData formData = FormData.fromMap({
       if (videoFile != null)
         'video': await MultipartFile.fromFile(videoFile.path),
       'title': title,
       'content': content,
-      'user_id': 1,
+      'user_id': userId,
     });
 
     DioHelper.postData(url: EndPointsConstants.post, data: formData)
