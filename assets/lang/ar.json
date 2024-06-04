@@ -2,7 +2,7 @@
   "appName": "دليل فلسطين التجاري",
   "login": "تسجيل الدخول",
   "enterPhone": "الرجاء ادخال رقم الهاتف",
-  "userPhone" : "رقم الهاتف",
+  "userPhone": "رقم الهاتف",
   "enterPassword": " الرجاءادخال كلمة المرور",
   "userPassword": "كلمة المرور",
   "openingStatement": "سجل الدخول الى دليل فلسطين التجاري",
@@ -10,10 +10,15 @@
   "users": "المستخدمين",
   "companies": "الشركات",
   "advertisements": "الاعلانات",
-  "adminPanel" : "لوحة التحكم",
+  "adminPanel": "لوحة التحكم",
   "_comment": "drawer",
   "drawer_videos": "الفيديوهات",
   "_comment": "videos",
-  "video_add_video_title": "إضافة فيديو"
-
+  "add_video_title": "إضافة فيديو",
+  "add_video_title_field": "العنوان",
+  "add_video_title_field_required": "الرجاء كتابة العنوان",
+  "add_video_content_field": "المحتوى",
+  "add_video_content_field_required": "الرجاء كتابة المحتوى",
+  "add_video_pick_video_button": "إختيار فيديو",
+  "add_video_add_video_button": "إضافة الفيديو"
 }

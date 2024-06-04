@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:videos_application/core/utils/navigation_services.dart';
+import 'package:videos_application/core/values/lang_keys.dart';
 import 'package:videos_application/modules/upload_video_modules/upload_video_cubit/upload_video_cubit.dart';
 import 'package:videos_application/modules/upload_video_modules/upload_video_cubit/upload_video_states.dart';
 import 'package:videos_application/modules/videos_modules/video_player_screen.dart';
@@ -38,7 +39,7 @@ class UploadVideoScreen extends StatelessWidget {
             children: [
               Scaffold(
                 appBar: AppBar(
-                  title: Text('video_add_video_title'.tr()),
+                  title: Text(LangKeys.ADD_VIDEO_TITLE.tr()),
                   actions: [
                     IconButton(
                       onPressed: () {
@@ -57,12 +58,13 @@ class UploadVideoScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         MyTextFormField(
-                          label: 'title',
+                          label: LangKeys.ADD_VIDEO_TITLE_FIELD.tr(),
                           controller: uploadVideoCubit.titleController,
                           textInputAction: TextInputAction.next,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'title is required';
+                              return LangKeys.ADD_VIDEO_TITLE_FIELD_REQUIRED
+                                  .tr();
                             }
                             return null;
                           },
@@ -71,12 +73,13 @@ class UploadVideoScreen extends StatelessWidget {
                           height: 10,
                         ),
                         MyTextFormField(
-                          label: 'content',
+                          label: LangKeys.ADD_VIDEO_CONTENT_FIELD.tr(),
                           controller: uploadVideoCubit.contentController,
                           textInputAction: TextInputAction.done,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'content is required';
+                              return LangKeys.ADD_VIDEO_CONTENT_FIELD_REQUIRED
+                                  .tr();
                             }
                             return null;
                           },
@@ -97,7 +100,9 @@ class UploadVideoScreen extends StatelessWidget {
                                             uploadVideoCubit.pickVideo,
                                       );
                                     },
-                                    child: Text('pick video'),
+                                    child: Text(LangKeys
+                                        .ADD_VIDEO_PICK_VIDEO_BUTTON
+                                        .tr()),
                                   );
                                 }),
                             Text(
@@ -124,7 +129,7 @@ class UploadVideoScreen extends StatelessWidget {
                               );
                             }
                           },
-                          child: Text('add post with video'),
+                          child: Text(LangKeys.ADD_VIDEO_ADD_VIDEO_BUTTON.tr()),
                         ),
                       ],
                     ),

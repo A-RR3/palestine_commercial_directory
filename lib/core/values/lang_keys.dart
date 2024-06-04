@@ -23,5 +23,12 @@ class LangKeys {
   static const String DRAWER_VIDEOS = 'drawer_videos';
 
   // Video
-  static const String VIDEO_ADD_TITLE = 'video_add_video_title';
+  static const String ADD_VIDEO_TITLE = 'add_video_title';
+  static const String ADD_VIDEO_TITLE_FIELD = 'add_video_title_field';
+  static const String ADD_VIDEO_TITLE_FIELD_REQUIRED = 'add_video_title_field_required';
+  static const String ADD_VIDEO_CONTENT_FIELD = 'add_video_content_field';
+  static const String ADD_VIDEO_CONTENT_FIELD_REQUIRED = 'add_video_content_field_required';
+  static const String ADD_VIDEO_PICK_VIDEO_BUTTON = 'add_video_pick_video_button';
+  static const String ADD_VIDEO_ADD_VIDEO_BUTTON = 'add_video_add_video_button';
+
 }

@@ -81,38 +81,12 @@ class _VideoCardState extends State<VideoCard> {
                   ),
                 )),
               )
-            : GestureDetector(
-                onTap: () {
-                  widget.videosCubit.newState();
-                },
-                child: Container(
-                  color: Colors.white,
-                  child: const Center(
-                    child: Text("Loading"),
-                  ),
+            : Container(
+                color: Colors.white,
+                child: const Center(
+                  child: Text(''),
                 ),
               ),
-        // TextButton(
-        //     onPressed: () {
-        //       widget.videosCubit.newState();
-        //     },
-        //     child: Text('click'))
-        // Column(
-        //   mainAxisAlignment: MainAxisAlignment.end,
-        //   children: <Widget>[
-        //     Row(
-        //       mainAxisSize: MainAxisSize.max,
-        //       crossAxisAlignment: CrossAxisAlignment.end,
-        //       children: <Widget>[
-        //         VideoDescription(videoModel.user, videoModel.videoTitle,
-        //             videoModel.songName),
-        //         ActionsToolbar(videoModel.likes, videoModel.comments,
-        //             "https://www.andersonsobelcosmetic.com/wp-content/uploads/2018/09/chin-implant-vs-fillers-best-for-improving-profile-bellevue-washington-chin-surgery.jpg"),
-        //       ],
-        //     ),
-        //     SizedBox(height: 20)
-        //   ],
-        // ),
       ],
     );
   }

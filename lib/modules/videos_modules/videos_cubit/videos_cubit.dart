@@ -1,14 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:video_player/video_player.dart';
-import 'package:videos_application/demo_data.dart';
 import 'package:videos_application/models/basic_models/post_model.dart';
-import 'package:videos_application/models/video_models/data_model.dart';
 import 'package:videos_application/models/video_models/get_videos_model.dart';
 import 'package:videos_application/modules/videos_modules/videos_cubit/videos_states.dart';
 import 'package:videos_application/shared/network/remote/dio_helper.dart';
 import 'package:videos_application/shared/network/remote/end_points.dart';
-
-import '../../../models/video_models/video_model.dart';
 
 class VideosCubit extends Cubit<VideosStates> {
   VideosCubit() : super(VideosInitialState());
@@ -17,9 +13,6 @@ class VideosCubit extends Cubit<VideosStates> {
 
   GetVideosModel? getVideosModel;
 
-  // DataModel? dataModel;
-
-  // VideoModel? videoModel;
 
   void getVideosData() {
     emit(GetVideosLoadingState());
@@ -60,35 +53,6 @@ class VideosCubit extends Cubit<VideosStates> {
     }
   }
 
-  // Future<void> loadController({
-  //   required VideoModel videoModel,
-  //   required VideoPlayerController? videoPlayerController,
-  // }) async {
-  //   print('load controller');
-  //   emit(LoadControllerStartState());
-  //   // await videoModel.loadController();
-  //   videoPlayerController =
-  //       VideoPlayerController.networkUrl(Uri.parse(videoModel.url!));
-  //   await videoPlayerController.initialize().then((v) {
-  //     videoPlayerController?.play();
-  //     videoPlayerController?.setLooping(true);
-  //     print('load controller successfully');
-  //     emit(LoadControllerEndSuccessfullyState());
-  //   }).catchError((error) {
-  //     print('error in load controller');
-  //     emit(LoadControllerEndWithErrorState());
-  //   });
-  // }
-
-  // void disposeController({
-  //   required VideoPlayerController? videoPlayerController,
-  // }) {
-  //   print('dispose controller');
-  //   videoPlayerController?.pause();
-  //   videoPlayerController?.dispose();
-  //   videoPlayerController = null;
-  // }
-
   void pauseVideo(VideoPlayerController videoPlayerController) {
     videoPlayerController.pause();
   }
@@ -97,9 +61,6 @@ class VideosCubit extends Cubit<VideosStates> {
     videoPlayerController.play();
   }
 
-  void newState() {
-    emit(NewState());
-  }
 
   @override
   Future<void> close() {
