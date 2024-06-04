@@ -13,6 +13,8 @@
   "adminPanel" : "Admin Panel",
   "_comment": "drawer",
   "drawer_videos": "videos",
-  "_comment": "videos"
+  "_comment": "videos",
+  "video_add_video_title": "Add New Video"
+
 
 }

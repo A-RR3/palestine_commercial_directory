@@ -37,6 +37,10 @@ class UploadVideoCubit extends Cubit<UploadVideoStates>
       video = await picker.pickVideo(source: ImageSource.gallery);
       if (video != null) {
         print('success');
+        print('before compress');
+        compressVideo(video!.path);
+
+        print('after compress');
       } else {
         print('no video selected');
       }

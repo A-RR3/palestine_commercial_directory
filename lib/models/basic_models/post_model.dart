@@ -1,4 +1,5 @@
 class PostModel {
+  final int? pId;
   final String? pTitle;
   final String? pContent;
   final String? pUserId;
@@ -7,7 +8,6 @@ class PostModel {
   final String? pType;
   final DateTime? updatedAt;
   final DateTime? createdAt;
-  final int? pId;
 
   PostModel({
     this.pTitle,

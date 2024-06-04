@@ -21,4 +21,7 @@ class LangKeys {
 
   // Drawer
   static const String DRAWER_VIDEOS = 'drawer_videos';
+
+  // Video
+  static const String VIDEO_ADD_TITLE = 'video_add_video_title';
 }

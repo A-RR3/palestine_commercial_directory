@@ -13,6 +13,7 @@
   "adminPanel" : "لوحة التحكم",
   "_comment": "drawer",
   "drawer_videos": "الفيديوهات",
-  "_comment": "videos"
+  "_comment": "videos",
+  "video_add_video_title": "إضافة فيديو"
 
 }

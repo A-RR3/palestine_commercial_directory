@@ -6,7 +6,7 @@ class CustomTextFormField extends StatelessWidget {
   final String? Function(String?)? validator;
   final Function(String)? onChanged;
   final String hintText;
-  final IconData prefixIcon;
+  final IconData? prefixIcon;
   final IconButton? suffixIcon;
   final InputBorder? border;
   final TextInputType textInputType;
@@ -23,7 +23,7 @@ class CustomTextFormField extends StatelessWidget {
       this.validator,
       this.onChanged,
       required this.hintText,
-      required this.prefixIcon,
+      this.prefixIcon,
       this.border,
       required this.textInputType,
       this.suffixIcon,
