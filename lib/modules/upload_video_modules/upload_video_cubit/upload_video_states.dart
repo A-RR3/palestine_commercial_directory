@@ -17,3 +17,13 @@ class UploadVideoErrorState extends UploadVideoStates {
 
   UploadVideoErrorState({required this.error});
 }
+
+class CompressVideoLoadingState extends UploadVideoStates {}
+
+class CompressVideoSuccessState extends UploadVideoStates {}
+
+class CompressVideoErrorState extends UploadVideoStates {
+  final String error;
+
+  CompressVideoErrorState({required this.error});
+}
