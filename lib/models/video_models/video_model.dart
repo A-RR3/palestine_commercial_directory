@@ -10,7 +10,7 @@ class VideoModel {
   final String? comments;
   final String? url;
 
-  VideoPlayerController? videoPlayerController;
+  // VideoPlayerController? videoPlayerController;
 
   VideoModel({
     this.id,
@@ -44,11 +44,14 @@ class VideoModel {
         "user": user,
         "user_pic": userPic,
       };
+  //
+  // Future<void> loadController() async {
+  //   videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(url!));
+  //   await videoPlayerController?.initialize();
+  //   videoPlayerController?.setLooping(true);
+  //   videoPlayerController?.play();
+  // }
 
-  Future<void> loadController() async {
-    videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(url!));
-    await videoPlayerController?.initialize();
-    videoPlayerController?.setLooping(true);
-    videoPlayerController?.play();
-  }
+
+
 }

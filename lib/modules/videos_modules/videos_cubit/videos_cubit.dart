@@ -25,12 +25,55 @@ class VideosCubit extends Cubit<VideosStates> {
     emit(GetVideosSuccessState());
   }
 
-  // send model (that contains controller)
-  void loadController({required VideoModel videoModel}) async {
+  Future<void> loadController({
+    required VideoModel videoModel,
+    required Function(VideoPlayerController?) onControllerLoaded,
+  }) async {
+    print('load controller');
     emit(LoadControllerStartState());
-    await videoModel.loadController();
-    emit(LoadControllerEndState());
+    try {
+      VideoPlayerController controller =
+          VideoPlayerController.networkUrl(Uri.parse(videoModel.url!));
+      await controller.initialize();
+      controller.play();
+      controller.setLooping(true);
+      print('load controller successfully');
+      emit(LoadControllerEndSuccessfullyState());
+      onControllerLoaded(controller); // Pass controller back to the caller
+    } catch (error) {
+      print('error in load controller: $error');
+      emit(LoadControllerEndWithErrorState());
+    }
   }
+
+  // Future<void> loadController({
+  //   required VideoModel videoModel,
+  //   required VideoPlayerController? videoPlayerController,
+  // }) async {
+  //   print('load controller');
+  //   emit(LoadControllerStartState());
+  //   // await videoModel.loadController();
+  //   videoPlayerController =
+  //       VideoPlayerController.networkUrl(Uri.parse(videoModel.url!));
+  //   await videoPlayerController.initialize().then((v) {
+  //     videoPlayerController?.play();
+  //     videoPlayerController?.setLooping(true);
+  //     print('load controller successfully');
+  //     emit(LoadControllerEndSuccessfullyState());
+  //   }).catchError((error) {
+  //     print('error in load controller');
+  //     emit(LoadControllerEndWithErrorState());
+  //   });
+  // }
+
+  // void disposeController({
+  //   required VideoPlayerController? videoPlayerController,
+  // }) {
+  //   print('dispose controller');
+  //   videoPlayerController?.pause();
+  //   videoPlayerController?.dispose();
+  //   videoPlayerController = null;
+  // }
 
   void pauseVideo(VideoPlayerController videoPlayerController) {
     videoPlayerController.pause();

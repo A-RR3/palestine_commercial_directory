@@ -8,7 +8,7 @@ class VideoCard extends StatefulWidget {
   final VideoModel videoModel;
   final VideosCubit videosCubit;
 
-  const VideoCard({
+  VideoCard({
     super.key,
     required this.videoModel,
     required this.videosCubit,
@@ -19,46 +19,79 @@ class VideoCard extends StatefulWidget {
 }
 
 class _VideoCardState extends State<VideoCard> {
+  VideoPlayerController? videoPlayerController;
 
   @override
   void initState() {
-
+    print('start init');
     super.initState();
-    widget.videosCubit.loadController(videoModel: widget.videoModel);
+    // widget.videosCubit.loadController(
+    //   videoModel: widget.videoModel,
+    //   videoPlayerController: videoPlayerController,
+    // );
+    widget.videosCubit.loadController(
+      videoModel: widget.videoModel,
+      onControllerLoaded: (controller) {
+        setState(() {
+          videoPlayerController = controller;
+        });
+      },
+    );
+    print('end init');
   }
+
+  @override
+  void dispose() {
+    print("dispoooooooooooooss");
+    // widget.videosCubit
+    //     .disposeController(videoPlayerController: videoPlayerController);
+    if (videoPlayerController != null) {
+      videoPlayerController!.pause();
+      videoPlayerController!.dispose();
+      videoPlayerController = null;
+    }
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        widget.videoModel.videoPlayerController != null
+        // videoPlayerController != null
+        videoPlayerController != null
+            // &&
+            //     videoPlayerController!.value.isInitialized
             ? GestureDetector(
                 onTap: () {
                   print('vid clicked');
-                  if (widget.videoModel.videoPlayerController!.value.isPlaying) {
-                    widget.videosCubit.pauseVideo(widget.videoModel.videoPlayerController!);
+                  if (videoPlayerController!.value.isPlaying) {
+                    widget.videosCubit.pauseVideo(videoPlayerController!);
                   } else {
-                    widget.videosCubit.playVideo(widget.videoModel.videoPlayerController!);
+                    widget.videosCubit.playVideo(videoPlayerController!);
                   }
                 },
                 child: SizedBox.expand(
                     child: FittedBox(
                   fit: BoxFit.cover,
                   child: SizedBox(
-                    width:
-                        widget.videoModel.videoPlayerController!.value.size.width ?? 0,
-                    height:
-                        widget.videoModel.videoPlayerController!.value.size.height ??
-                            0,
-                    child: VideoPlayer(widget.videoModel.videoPlayerController!),
+                    width: videoPlayerController!.value.size.width ,
+                    height: videoPlayerController!.value.size.height,
+                    child: VideoPlayer(videoPlayerController!),
                   ),
                 )),
               )
-            : Container(
-                color: Colors.black,
-                child: const Center(
-                  child: Text("Loading"),
+            : GestureDetector(
+          onTap: (){
+
+            widget.videosCubit.newState();
+          },
+              child: Container(
+                  color: Colors.pink,
+                  child: const Center(
+                    child: Text("Loading"),
+                  ),
                 ),
-              ),
+            ),
         // TextButton(
         //     onPressed: () {
         //       widget.videosCubit.newState();

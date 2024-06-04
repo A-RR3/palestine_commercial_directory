@@ -10,6 +10,8 @@ class GetVideosErrorState extends VideosStates {}
 
 class LoadControllerStartState extends VideosStates {}
 
-class LoadControllerEndState extends VideosStates {}
+class LoadControllerEndSuccessfullyState extends VideosStates {}
+
+class LoadControllerEndWithErrorState extends VideosStates {}
 
 class NewState extends VideosStates {}
