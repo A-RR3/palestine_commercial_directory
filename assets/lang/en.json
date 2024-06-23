@@ -1,5 +1,5 @@
 {
-  "appName" : "Palestine Commercial Directory",
+  "homeScreen" : "Home Screen",
   "login": "Login",
   "enterPhone": "Please enter your phone number",
   "userPhone" : "Phone number",
@@ -12,7 +12,9 @@
   "advertisements": "Advertisements",
   "adminPanel" : "Admin Panel",
   "_comment": "drawer",
+  "changeLanguage": "Change language",
   "drawer_videos": "videos",
-  "_comment": "videos"
-
+  "_comment": "videos",
+  "_comment": "users screen",
+  "numberOfCompanies": "Number of Companies: {number}",
 }
