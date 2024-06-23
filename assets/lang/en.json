@@ -1,5 +1,5 @@
 {
-  "appName" : "Palestine Commercial Directory",
+  "homeScreen" : "Home Screen",
   "login": "Login",
   "enterPhone": "Please enter your phone number",
   "userPhone" : "Phone number",
@@ -12,8 +12,11 @@
   "advertisements": "Advertisements",
   "adminPanel" : "Admin Panel",
   "_comment": "drawer",
+  "changeLanguage": "Change language",
   "drawer_videos": "videos",
-  "_comment": "videos",
+  "_comment": "users screen",
+  "numberOfCompanies": "Number of Companies: {number}",
+ "_comment": "videos",
   "add_video_title": "Add New Video",
   "add_video_title_field": "Title",
   "add_video_title_field_required": "Please enter the title",
@@ -21,6 +24,5 @@
   "add_video_content_field_required": "Please enter the content",
   "add_video_pick_video_button": "Pick Video",
   "add_video_add_video_button": "Add the Video"
-
 
 }
