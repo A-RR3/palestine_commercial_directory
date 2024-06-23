@@ -1,5 +1,5 @@
 {
-  "appName": "دليل فلسطين التجاري",
+  "homeScreen": "الصفحة الرئيسية",
   "login": "تسجيل الدخول",
   "enterPhone": "الرجاء ادخال رقم الهاتف",
   "userPhone" : "رقم الهاتف",
@@ -9,10 +9,26 @@
   "statistics": "الاحصائيات",
   "users": "المستخدمين",
   "companies": "الشركات",
-  "advertisements": "الاعلانات",
+  "advertisments": "الاعلانات",
   "adminPanel" : "لوحة التحكم",
   "_comment": "drawer",
+  "changeLanguage": "تغيير اللغة",
   "drawer_videos": "الفيديوهات",
-  "_comment": "videos"
+  "_comment": "videos",
+  "_comment": "users screen",
+  "numberOfCompanies": "عدد الشركات: {number}",
+  "edit": "تعديل",
+  "nonActive" : "غير مفعل",
+  "active" : "مفعل",
+  "logout": "تسجيل الخروج",
+  "search": "ابحث",
+  "location": "الموقع",
+  "ownerName": "المالك: {name}",
+  "companyNum": "الهاتف: {phone}",
+  "categories": "التصنيفات",
+  "noUsersFound": "لا يوجد مستخدمين",
+  "userCompanies": "الشركات",
+  "userName": "الاسم",
+  "validPhoneMessage": "الرجاء ادخال رقم هاتف صحيح"
 
 }

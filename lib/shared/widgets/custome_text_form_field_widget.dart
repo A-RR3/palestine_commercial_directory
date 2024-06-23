@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:videos_application/core/utils/extensions.dart';
 
 class CustomTextFormField extends StatelessWidget {
   final TextEditingController controller;
   final String? Function(String?)? validator;
   final Function(String)? onChanged;
-  final String hintText;
-  final IconData prefixIcon;
+  final String? hintText;
+  final String? labelText;
+  final IconData? prefixIcon;
   final IconButton? suffixIcon;
   final InputBorder? border;
   final TextInputType textInputType;
@@ -16,14 +16,16 @@ class CustomTextFormField extends StatelessWidget {
   final Function(String)? onFieldSubmitted;
   final TextStyle? textStyle;
   final bool filled;
+  final Color? fillColor;
 
   const CustomTextFormField(
       {super.key,
       required this.controller,
       this.validator,
       this.onChanged,
-      required this.hintText,
-      required this.prefixIcon,
+      this.hintText,
+      this.labelText,
+      this.prefixIcon,
       this.border,
       required this.textInputType,
       this.suffixIcon,
@@ -32,18 +34,24 @@ class CustomTextFormField extends StatelessWidget {
       this.textInputAction,
       this.onFieldSubmitted,
       this.textStyle,
+      this.fillColor,
       this.filled = false});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onTapOutside: (event) {},
       enableInteractiveSelection: true,
       controller: controller,
       keyboardType: textInputType,
       validator: validator,
       onChanged: onChanged,
       decoration: InputDecoration(
-          fillColor: filled ? Colors.white.withOpacity(.5) : null,
+          fillColor: filled
+              ? fillColor != null
+                  ? fillColor
+                  : Colors.white.withOpacity(.5)
+              : null,
           hintText: hintText,
           prefixIcon: Icon(prefixIcon),
           border: border ??
@@ -52,12 +60,13 @@ class CustomTextFormField extends StatelessWidget {
                   borderSide: BorderSide.none),
           suffixIcon: suffixIcon,
           enabledBorder: border,
-          contentPadding: const EdgeInsets.symmetric(vertical: 20.0)),
+          labelText: labelText,
+          contentPadding: const EdgeInsets.symmetric(vertical: 9.0)),
       obscureText: obscureText,
       focusNode: focusNode,
       textInputAction: textInputAction,
       onFieldSubmitted: onFieldSubmitted,
-      style: textStyle ?? context.textTheme.bodyLarge,
+      style: textStyle ?? TextStyle(fontFamily: 'CairoMedium', fontSize: 18),
     );
   }
 }

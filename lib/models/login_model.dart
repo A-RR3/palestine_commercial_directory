@@ -1,12 +1,14 @@
 import 'dart:convert';
 
+import 'package:videos_application/models/user_model.dart';
+
 LoginModel loginModelFromJson(String str) =>
     LoginModel.fromJson(json.decode(str));
 
 class LoginModel {
   final bool status;
   final String? message;
-  final UserData? user;
+  final User? user;
   final String? token;
 
   LoginModel({required this.status, this.message, this.user, this.token});
@@ -14,28 +16,7 @@ class LoginModel {
   factory LoginModel.fromJson(Map<String, dynamic> json) => LoginModel(
         status: json["status"],
         message: json["message"],
-        user: json["user"] == null ? null : UserData.fromJson(json["user"]),
+        user: json["user"] == null ? null : User.fromJson(json["user"]),
         token: json["token"],
       );
-}
-
-class UserData {
-  final int id;
-  final String? name;
-  final String? phone;
-  final int? role;
-  final int? status;
-
-  UserData(
-      {required this.id,
-      required this.name,
-      required this.phone,
-      this.role,
-      this.status});
-
-  factory UserData.fromJson(Map<String, dynamic> json) => UserData(
-      id: json["u_id"],
-      name: json["u_name"],
-      phone: json["u_phone"],
-      role: json["u_role_id"]);
 }

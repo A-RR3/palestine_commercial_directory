@@ -7,7 +7,7 @@ mixin CompressVideoMixin<T> on Cubit<T> {
   Future<void> compressVideo(String filePath) async {
     // emit(VideoCompressionLoading());
     try {
-      print('original file path: ${filePath}');
+      print('original file path: $filePath');
       mediaInfo = await VideoCompress.compressVideo(
         filePath,
         quality: VideoQuality.MediumQuality,

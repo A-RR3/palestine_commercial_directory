@@ -40,7 +40,7 @@ class UploadVideoScreen extends StatelessWidget {
                         return null;
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     MyTextFormField(
@@ -73,7 +73,7 @@ class UploadVideoScreen extends StatelessWidget {
                                 }
                                 print('after conmpress');
                               },
-                              child: Text('pick video'));
+                              child: const Text('pick video'));
                         }),
                     ElevatedButton(
                       onPressed: () {
@@ -92,7 +92,7 @@ class UploadVideoScreen extends StatelessWidget {
                           );
                         }
                       },
-                      child: Text('add post with video'),
+                      child: const Text('add post with video'),
                     ),
                   ],
                 ),
