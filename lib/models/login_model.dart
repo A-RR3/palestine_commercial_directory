@@ -5,6 +5,7 @@ import 'package:videos_application/models/user_model.dart';
 LoginModel loginModelFromJson(String str) =>
     LoginModel.fromJson(json.decode(str));
 
+
 class LoginModel {
   final bool status;
   final String? message;

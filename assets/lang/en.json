@@ -14,7 +14,6 @@
   "_comment": "drawer",
   "changeLanguage": "Change language",
   "drawer_videos": "videos",
-  "_comment": "videos",
   "_comment": "users screen",
   "numberOfCompanies": "Number of Companies: {number}",
   "edit": "Edit",
@@ -30,4 +29,13 @@
   "userCompanies": "User Companies",
   "userName": "Name",
   "validPhoneMessage": "Please enter a valid phone number"
+ "_comment": "videos",
+  "add_video_title": "Add New Video",
+  "add_video_title_field": "Title",
+  "add_video_title_field_required": "Please enter the title",
+  "add_video_content_field": "content",
+  "add_video_content_field_required": "Please enter the content",
+  "add_video_pick_video_button": "Pick Video",
+  "add_video_add_video_button": "Add the Video"
+
 }

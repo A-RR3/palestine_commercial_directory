@@ -2,19 +2,20 @@
   "homeScreen": "الصفحة الرئيسية",
   "login": "تسجيل الدخول",
   "enterPhone": "الرجاء ادخال رقم الهاتف",
-  "userPhone" : "رقم الهاتف",
+  "userPhone": "رقم الهاتف",
   "enterPassword": " الرجاءادخال كلمة المرور",
   "userPassword": "كلمة المرور",
   "openingStatement": "سجل الدخول الى دليل فلسطين التجاري",
   "statistics": "الاحصائيات",
   "users": "المستخدمين",
   "companies": "الشركات",
-  "advertisments": "الاعلانات",
-  "adminPanel" : "لوحة التحكم",
+
+  "advertisements": "الاعلانات",
+  "adminPanel": "لوحة التحكم",
   "_comment": "drawer",
   "changeLanguage": "تغيير اللغة",
   "drawer_videos": "الفيديوهات",
-  "_comment": "videos",
+ 
   "_comment": "users screen",
   "numberOfCompanies": "عدد الشركات: {number}",
   "edit": "تعديل",
@@ -30,5 +31,12 @@
   "userCompanies": "الشركات",
   "userName": "الاسم",
   "validPhoneMessage": "الرجاء ادخال رقم هاتف صحيح"
-
+ "_comment": "videos",
+  "add_video_title": "إضافة فيديو",
+  "add_video_title_field": "العنوان",
+  "add_video_title_field_required": "الرجاء كتابة العنوان",
+  "add_video_content_field": "المحتوى",
+  "add_video_content_field_required": "الرجاء كتابة المحتوى",
+  "add_video_pick_video_button": "إختيار فيديو",
+  "add_video_add_video_button": "إضافة الفيديو"
 }

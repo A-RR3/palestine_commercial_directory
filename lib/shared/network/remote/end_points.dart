@@ -22,4 +22,8 @@ class EndPointsConstants {
   static const String post = 'post';
 
   static const usersStorage = '$subBaseUrl/storage/app/public/users/images/';
+
+  static const String videos = 'videos';
+
+  static const String videosStorage = '$subBaseUrl/public/storage/posts/videos/';
 }

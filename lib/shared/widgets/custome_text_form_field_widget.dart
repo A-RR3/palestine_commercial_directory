@@ -6,6 +6,7 @@ class CustomTextFormField extends StatelessWidget {
   final Function(String)? onChanged;
   final String? hintText;
   final String? labelText;
+
   final IconData? prefixIcon;
   final IconButton? suffixIcon;
   final InputBorder? border;
