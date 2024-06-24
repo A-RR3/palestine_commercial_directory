@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:videos_application/modules/admin/screens/companies/cubit/companies_states.dart';
-import 'package:videos_application/modules/home/cubit/home_states.dart';
 import 'package:videos_application/shared/network/remote/end_points.dart';
 
 import '../../../../../core/utils/mixins/cancel_token_mixin.dart';
@@ -20,7 +19,7 @@ class CompaniesCubit extends Cubit<CompaniesStates> with CancelTokenMixin {
     emit(CompaniesInitialState());
     companies = [];
     await DioHelper.getData(
-      url: '${COMPANIES}/${categoryId}',
+      url: '$COMPANIES/$categoryId',
       token: userToken,
     ).then((response) {
       print(response);

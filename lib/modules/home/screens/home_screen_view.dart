@@ -1,35 +1,35 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:videos_application/modules/home/cubit/posts_cubit/posts_cubit.dart';
+import 'package:videos_application/modules/home/cubit/posts_cubit/posts_states.dart';
 
 import '../../../models/post_model.dart';
 import '../widgets/post_widget.dart';
 
 class HomeView extends StatelessWidget {
-  HomeView({super.key});
-  final List<Post> posts = [
-    Post(
-      userName: 'John Doe',
-      userImage: 'https://via.placeholder.com/150',
-      postContent: 'This is a post content example.',
-      postImage: 'https://via.placeholder.com/400',
-      likes: 30,
-      comments: 10,
-    ),
-    Post(
-      userName: 'Jane Smith',
-      userImage: 'https://via.placeholder.com/150',
-      postContent: 'Another post content example.',
-      postImage: 'https://via.placeholder.com/400',
-      likes: 50,
-      comments: 20,
-    ),
-  ];
+  const HomeView({super.key});
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: posts.length,
-      itemBuilder: (context, index) {
-        return PostWidget(post: posts[index]);
-      },
-    );
+    return BlocProvider(
+        create: (context) => PostsCubit()..getPosts(),
+        child: BlocConsumer<PostsCubit, PostsStates>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            PostsCubit postsCubit = PostsCubit.get(context);
+            List<Post> posts = postsCubit.posts;
+
+            if (state is FetchPostsLoadingState) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            return ListView.builder(
+              itemCount: posts.length,
+              itemBuilder: (context, index) {
+                return PostWidget(post: posts[index]);
+              },
+            );
+          },
+        ));
   }
 }

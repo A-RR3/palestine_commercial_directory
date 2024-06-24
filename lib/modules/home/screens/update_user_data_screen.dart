@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -21,7 +20,7 @@ import '../../../core/values/cache_keys.dart';
 import '../../../shared/network/remote/end_points.dart';
 
 class UpdateUserDataScreen extends StatelessWidget {
-  UpdateUserDataScreen({super.key, this.userId, required this.homeCubit});
+  const UpdateUserDataScreen({super.key, this.userId, required this.homeCubit});
   final int? userId;
   final HomeCubit homeCubit;
 
@@ -115,11 +114,11 @@ class UpdateUserDataScreen extends StatelessWidget {
                                   width: 70,
                                   decoration: BoxDecoration(
                                     color: Colors.black.withOpacity(0.3),
-                                    borderRadius: BorderRadius.vertical(
+                                    borderRadius: const BorderRadius.vertical(
                                         bottom: Radius.circular(150)),
                                   ),
                                   child: IconButton(
-                                    icon: Icon(Icons.photo_camera,
+                                    icon: const Icon(Icons.photo_camera,
                                         color: Colors.white),
                                     onPressed: updateCubit.pickImage,
                                   ),
@@ -138,7 +137,7 @@ class UpdateUserDataScreen extends StatelessWidget {
                                     controller: updateCubit.phoneController,
                                     labelText: LangKeys.USER_PHONE.tr(),
                                     textInputType: TextInputType.text,
-                                    border: OutlineInputBorder(
+                                    border: const OutlineInputBorder(
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(40)),
                                         borderSide: BorderSide(
@@ -153,7 +152,7 @@ class UpdateUserDataScreen extends StatelessWidget {
                                     controller: updateCubit.nameController,
                                     labelText: LangKeys.USER_NAME.tr(),
                                     textInputType: TextInputType.text,
-                                    border: OutlineInputBorder(
+                                    border: const OutlineInputBorder(
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(40)),
                                         borderSide: BorderSide(
@@ -169,8 +168,8 @@ class UpdateUserDataScreen extends StatelessWidget {
                                       // homeCubit.getSingleUserById(
                                       //     homeCubit.user!.uId!);
                                     },
-                                    child: DefaultText(text: 'Update'),
                                     color: Colors.blueGrey,
+                                    child: const DefaultText(text: 'Update'),
                                   )
                                 ],
                               )),

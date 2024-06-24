@@ -1,15 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:videos_application/core/presentation/Palette.dart';
 import 'package:videos_application/core/utils/extensions.dart';
-import 'package:videos_application/core/values/asset_keys.dart';
 import 'package:videos_application/core/values/constants.dart';
 import 'package:videos_application/modules/admin/screens/users/cubit/states.dart';
 import 'package:videos_application/shared/network/remote/end_points.dart';
 import 'package:videos_application/shared/widgets/custom_text_widget.dart';
-import 'package:videos_application/shared/widgets/my_search_bar.dart';
 import '../../../core/values/cache_keys.dart';
 import '../../../core/values/lang_keys.dart';
 import '../../../models/user_model.dart';
@@ -51,7 +48,7 @@ class _ListViewWithControllerState extends State<ListViewWithController> {
                 if (state is ChangeUserStatusLoadingState ||
                     usersCubit.isActiveUsersLoading ||
                     usersCubit.isNonActiveUsersLoading)
-                  LinearProgressIndicator(),
+                  const LinearProgressIndicator(),
                 Expanded(
                     child: ListView.builder(
                         controller: scrollCubit.scrollController,
@@ -64,7 +61,7 @@ class _ListViewWithControllerState extends State<ListViewWithController> {
                           int listSize = widget.isActiveList
                               ? usersCubit.activeUsers.length
                               : usersCubit.archivedUsers.length;
-                          print('listSize ${listSize}');
+                          print('listSize $listSize');
 
                           // if (index == listSize - 1) {
                           //   return Text('data');
@@ -93,7 +90,7 @@ class _ListViewWithControllerState extends State<ListViewWithController> {
                                           borderRadius:
                                               BorderRadius.circular(35),
                                         ),
-                                        padding: EdgeInsets.only(top: 30),
+                                        padding: const EdgeInsets.only(top: 30),
                                       ),
                                     ),
                                     UserListTileWidget(
@@ -143,22 +140,20 @@ class _ListViewWithControllerState extends State<ListViewWithController> {
             .copyWith(color: Palette.adminPageIconsColor),
       ),
       leading: user.uImage != null
-          ? Container(
+          ? defaultContainer(
               width: 60,
               height: 70,
-              decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(40)),
               child: ClipOval(
                   child: Image.network(
                 '${EndPointsConstants.usersStorage}${user.uImage}',
                 fit: BoxFit.cover,
               )),
             )
-          : defaultPersonImage,
+          : defaultContainer(child: defaultPersonImage, hasShadow: true),
       onTap: () {
         FocusScope.of(context).unfocus();
         Future.delayed(
-          Duration(milliseconds: 700),
+          const Duration(milliseconds: 700),
           () => dialogScreen(context, user),
         );
       },
@@ -176,7 +171,7 @@ class _ListViewWithControllerState extends State<ListViewWithController> {
                         isActive: false));
           },
           icon: widget.isActiveList
-              ? Icon(
+              ? const Icon(
                   Icons.delete,
                   color: Colors.red,
                 )
@@ -194,24 +189,24 @@ class _ListViewWithControllerState extends State<ListViewWithController> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: isActivate
-              ? Text('Confirm Activation')
-              : Text('Confirm Deactivation'),
+              ? const Text('Confirm Activation')
+              : const Text('Confirm Deactivation'),
           content: isActivate
-              ? Text('Are you sure you want to activate this user?')
-              : Text('Are you sure you want to deactivate this user?'),
+              ? const Text('Are you sure you want to activate this user?')
+              : const Text('Are you sure you want to deactivate this user?'),
           actions: <Widget>[
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop(); // Dismiss the dialog
               },
-              child: Text('Cancel'),
+              child: const Text('Cancel'),
             ),
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop(); // Dismiss the dialog
                 callBackFunc(); // Perform the delete action
               },
-              child: Text('Confirm'),
+              child: const Text('Confirm'),
             ),
           ],
         );

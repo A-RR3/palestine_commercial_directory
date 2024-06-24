@@ -73,14 +73,14 @@ class UsersScreen extends StatelessWidget {
                           padding: const EdgeInsets.all(8.0),
                           child: TabBarView(children: [
                             (usersCubit.isActiveUsersLoading)
-                                ? SizedBox()
+                                ? const SizedBox()
                                 : (usersCubit.activeUsers.isEmpty)
                                     ? noUsersFoundWidget
                                     : ListViewWithController(
                                         isActiveList: true,
                                       ),
                             (usersCubit.isNonActiveUsersLoading)
-                                ? SizedBox()
+                                ? const SizedBox()
                                 : (usersCubit.archivedUsers.isEmpty)
                                     ? noUsersFoundWidget
                                     : ListViewWithController(

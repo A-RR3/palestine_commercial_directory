@@ -5,7 +5,7 @@ import 'package:videos_application/core/utils/extensions.dart';
 import '../../core/presentation/Palette.dart';
 
 class DefaultText extends StatelessWidget {
-  DefaultText({super.key, required this.text, this.style, this.color});
+  const DefaultText({super.key, required this.text, this.style, this.color});
   final String text;
   final TextStyle? style;
   final Color? color;
@@ -16,7 +16,7 @@ class DefaultText extends StatelessWidget {
       text,
       style: style ??
           context.textTheme.bodyLarge!
-              .copyWith(color: color != null ? color : Palette.border),
+              .copyWith(color: color ?? Palette.border),
     );
   }
 }

@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:videos_application/modules/admin/screens/companies/cubit/location_cubit.dart';
-import 'package:videos_application/modules/admin/screens/companies/cubit/location_states.dart';
 
 class GoogleMapWidget extends StatelessWidget {
-  GoogleMapWidget(
+  const GoogleMapWidget(
       {super.key, required this.companyLat, required this.locationCubit});
   final LatLng companyLat;
   final LocationCubit locationCubit;
@@ -23,17 +21,17 @@ class GoogleMapWidget extends StatelessWidget {
       ),
       markers: {
         Marker(
-            markerId: MarkerId("_currentLocation"),
+            markerId: const MarkerId("_currentLocation"),
             icon: BitmapDescriptor.defaultMarkerWithHue(
                 BitmapDescriptor.hueGreen),
             position: locationCubit.currentP!,
-            infoWindow: InfoWindow(title: 'origin')),
+            infoWindow: const InfoWindow(title: 'origin')),
         Marker(
-            markerId: MarkerId("_companyLocation"),
+            markerId: const MarkerId("_companyLocation"),
             icon:
                 BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
             position: companyLat,
-            infoWindow: InfoWindow(title: 'destination')),
+            infoWindow: const InfoWindow(title: 'destination')),
       },
       polylines: Set<Polyline>.of(locationCubit.polylines.values),
     );

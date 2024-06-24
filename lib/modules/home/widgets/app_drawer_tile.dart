@@ -5,7 +5,6 @@ import 'package:videos_application/core/values/constants.dart';
 
 import '../../../core/presentation/Palette.dart';
 import '../../../shared/widgets/custom_text_widget.dart';
-import '../cubit/home_cubit.dart';
 
 class AppDrawerTile extends StatelessWidget {
   const AppDrawerTile({super.key, required this.index, required this.onTap});

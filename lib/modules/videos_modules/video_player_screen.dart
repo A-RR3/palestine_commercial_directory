@@ -4,7 +4,6 @@ import 'package:videos_application/modules/videos_modules/video_card.dart';
 import 'package:videos_application/modules/videos_modules/videos_cubit/videos_cubit.dart';
 import 'package:videos_application/modules/videos_modules/videos_cubit/videos_states.dart';
 
-import '../upload_video_modules/upload_video_screen.dart';
 
 class VideoPlayerScreen extends StatelessWidget {
   const VideoPlayerScreen({super.key});
@@ -22,7 +21,7 @@ class VideoPlayerScreen extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               title: const Text('Videos'),
-              actions: [
+              actions: const [
                 // IconButton(
                 //     onPressed: () {
                 //       Navigator.pushReplacement(
@@ -35,10 +34,10 @@ class VideoPlayerScreen extends StatelessWidget {
               ],
             ),
             body: videosCubit.getVideosModel == null
-                ? Column(
+                ? const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Center(child: const CircularProgressIndicator()),
+                      Center(child: CircularProgressIndicator()),
                     ],
                   )
                 : PageView.builder(

@@ -88,7 +88,7 @@ class LoginScreen extends StatelessWidget {
                           height: deviceSize.height,
                           child: SingleChildScrollView(
                             child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 0),
+                              padding: const EdgeInsets.symmetric(horizontal: 0),
                               child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -200,7 +200,7 @@ class LoginScreen extends StatelessWidget {
                                                 height: 50,
                                                 child: (state
                                                         is LoginLoadingState)
-                                                    ? CircularProgressIndicator()
+                                                    ? const CircularProgressIndicator()
                                                     : Text(
                                                         LangKeys.LOGIN.tr(),
                                                         style: context.textTheme

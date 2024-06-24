@@ -1,9 +1,6 @@
-import 'dart:convert';
-import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:videos_application/core/utils/mixins/cancel_token_mixin.dart';
 import 'package:videos_application/modules/admin/screens/users/cubit/states.dart';
-import 'package:videos_application/modules/home/cubit/home_cubit.dart';
 import '../../../../../core/values/constants.dart';
 import '../../../../../models/user_model.dart';
 import '../../../../../shared/network/remote/dio_helper.dart';
@@ -43,7 +40,7 @@ class UsersCubit extends Cubit<UsersStates> with CancelTokenMixin {
   // }
 
   void fetchIfHasData({bool isActiveList = true}) async {
-    print('localListsUpdated${localListsUpdated}');
+    print('localListsUpdated$localListsUpdated');
     isActiveList
         ? activeListHasMore
             ? await getUsersData('')

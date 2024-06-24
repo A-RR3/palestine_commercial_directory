@@ -62,4 +62,11 @@ class User {
           ? []
           : List<CompanyModel>.from(
               json["companies"]!.map((x) => CompanyModel.fromJson(x))));
+
+  Map<String, dynamic> toJson() => {
+        "u_id": uId,
+        "u_name": uName,
+        "u_image": uImage,
+        "u_name_ar": uNameAr,
+      };
 }

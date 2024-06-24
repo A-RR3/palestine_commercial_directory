@@ -1,6 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
 
-import '../values/lang_keys.dart';
 
 class ValidationUtils {
   static String? validateIsEmpty(String? value, String msg) {

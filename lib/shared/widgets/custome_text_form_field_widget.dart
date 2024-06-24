@@ -49,9 +49,7 @@ class CustomTextFormField extends StatelessWidget {
       onChanged: onChanged,
       decoration: InputDecoration(
           fillColor: filled
-              ? fillColor != null
-                  ? fillColor
-                  : Colors.white.withOpacity(.5)
+              ? fillColor ?? Colors.white.withOpacity(.5)
               : null,
           hintText: hintText,
           prefixIcon: Icon(prefixIcon),
@@ -67,7 +65,7 @@ class CustomTextFormField extends StatelessWidget {
       focusNode: focusNode,
       textInputAction: textInputAction,
       onFieldSubmitted: onFieldSubmitted,
-      style: textStyle ?? TextStyle(fontFamily: 'CairoMedium', fontSize: 18),
+      style: textStyle ?? const TextStyle(fontFamily: 'CairoMedium', fontSize: 18),
     );
   }
 }

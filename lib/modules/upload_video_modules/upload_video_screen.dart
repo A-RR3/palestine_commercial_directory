@@ -1,26 +1,12 @@
-import 'dart:io';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:videos_application/core/utils/navigation_services.dart';
-import 'package:videos_application/core/values/lang_keys.dart';
-import 'package:videos_application/modules/upload_video_modules/upload_video_cubit/upload_video_cubit.dart';
-import 'package:videos_application/modules/upload_video_modules/upload_video_cubit/upload_video_states.dart';
-import 'package:videos_application/modules/videos_modules/video_player_screen.dart';
-import 'package:videos_application/shared/widgets/custom_disable_widget.dart';
-import 'package:videos_application/shared/widgets/my_text_form_field.dart';
 
-import '../../core/values/cache_keys.dart';
-import '../../core/values/constants.dart';
-import '../../permission_cubit/permission_cubit.dart';
-import '../../permission_cubit/permission_states.dart';
 
 class UploadVideoScreen extends StatelessWidget {
   const UploadVideoScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Placeholder();
+    return const Placeholder();
 // <<<<<<< admin_panel_backup
 //     return Scaffold(
 //       appBar: AppBar(

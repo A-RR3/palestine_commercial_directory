@@ -46,9 +46,9 @@ class HomeScreen extends StatelessWidget {
                 ),
                 body: (state is ChangeAppLangLoadingStateState ||
                         state is GetCurrentUserDataInitialState)
-                    ? Center(child: CircularProgressIndicator())
+                    ? const Center(child: CircularProgressIndicator())
                     : (!isLogged)
-                        ? HomeView()
+                        ? const HomeView()
                         : homeCubit.user?.uRoleId == 1
                             ? const AdminPanel()
                             : CompanyOwnerView(

@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:videos_application/core/values/constants.dart';
 import 'package:videos_application/core/values/lang_keys.dart';
 import 'package:videos_application/models/company_model.dart';
@@ -11,7 +10,7 @@ import 'package:videos_application/modules/admin/screens/companies/widgets/compa
 import 'package:videos_application/shared/widgets/default_app_bar.dart';
 
 class CompaniesScreen extends StatelessWidget {
-  CompaniesScreen({super.key, required this.categoryId, required this.cubit});
+  const CompaniesScreen({super.key, required this.categoryId, required this.cubit});
 
   final int categoryId;
   final CompaniesCubit cubit;
@@ -35,7 +34,7 @@ class CompaniesScreen extends StatelessWidget {
                             CompaniesCubit cubit = CompaniesCubit.get(context);
 
                             if (cState is CompaniesInitialState) {
-                              return SizedBox();
+                              return const SizedBox();
                             } else {
                               return ListView.separated(
                                   itemBuilder: (context, index) {

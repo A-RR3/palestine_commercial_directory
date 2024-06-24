@@ -25,7 +25,7 @@ ThemeData get lightTheme => ThemeData(
           borderRadius: BorderRadius.circular(15.0),
         ),
       ),
-      iconTheme: IconThemeData(color: Palette.adminPageIconsColor),
+      iconTheme: const IconThemeData(color: Palette.adminPageIconsColor),
 
       listTileTheme: ListTileThemeData(
         minVerticalPadding: 10,
@@ -35,7 +35,7 @@ ThemeData get lightTheme => ThemeData(
           color: Colors.black,
           fontSize: 22,
         ),
-        subtitleTextStyle: TextStyle(
+        subtitleTextStyle: const TextStyle(
             fontFamily: Fonts.tajawwalBold,
             color: Palette.adminPageIconsColor,
             fontSize: 18),
@@ -108,5 +108,5 @@ TextTheme get textTheme => TextTheme(
           fontSize: 20, fontWeight: FontWeight.w600, fontFamily: Fonts.medium),
       labelMedium: TextStyle(
           fontSize: 22, fontWeight: FontWeight.w500, fontFamily: Fonts.medium),
-      headlineSmall: TextStyle(fontSize: 23, fontWeight: FontWeight.w500),
+      headlineSmall: const TextStyle(fontSize: 23, fontWeight: FontWeight.w500),
     );

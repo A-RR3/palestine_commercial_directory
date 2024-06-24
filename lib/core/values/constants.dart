@@ -1,8 +1,6 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:videos_application/shared/network/local/cache_helper.dart';
 import '../presentation/Palette.dart';
 import 'asset_keys.dart';
 import 'cache_keys.dart';
@@ -54,20 +52,28 @@ Widget get appBarGradient => Container(
       gradient: appGradient,
     ));
 
-Widget get defaultPersonImage => Container(
-    width: 65,
-    height: 65,
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(40),
-      boxShadow: boxShadow,
-    ),
-    child: ClipOval(
-      // borderRadius: BorderRadius.circular(40),
+Widget defaultContainer(
+        {required Widget child,
+        double height = 65,
+        double width = 65,
+        double radius = 40,
+        bool hasShadow = false}) =>
+    Container(
+      width: width,
+      height: height,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(radius),
+        boxShadow: hasShadow ? boxShadow : null,
+      ),
+      child: child,
+    );
+
+Widget get defaultPersonImage => ClipOval(
       child: SvgPicture.asset(
         AssetsKeys.getIconPath(AssetsKeys.DEFAULT_PERSON),
         fit: BoxFit.cover,
       ),
-    ));
+    );
 
 //
 // Widget get defaultPersonImage => ClipOval(
@@ -80,22 +86,22 @@ Widget get defaultPersonImage => Container(
 //Home Page Constants
 
 List<BoxShadow> boxShadow = [
-  BoxShadow(
-      offset: const Offset(0, 2),
+  const BoxShadow(
+      offset: Offset(0, 2),
       blurRadius: 5,
       spreadRadius: -4,
       color: Color(0xff000000))
 ];
 
 List<BoxShadow> textShadow = [
-  BoxShadow(
-      offset: const Offset(0, 0),
+  const BoxShadow(
+      offset: Offset(0, 0),
       blurRadius: 20,
       spreadRadius: -10,
       color: Colors.black)
 ];
 
-Gradient appGradient = LinearGradient(
+Gradient appGradient = const LinearGradient(
   tileMode: TileMode.decal,
   colors: [
     // Color(0xffD35E99),

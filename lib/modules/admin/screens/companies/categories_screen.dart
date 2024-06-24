@@ -5,12 +5,12 @@ import 'package:videos_application/modules/admin/screens/companies/cubit/compani
 import 'package:videos_application/modules/admin/screens/companies/cubit/companies_states.dart';
 import 'package:videos_application/shared/widgets/default_app_bar.dart';
 import '../../../../core/values/lang_keys.dart';
-import '../../../../shared/widgets/my_search_bar.dart';
 import '../../widgets/category_item.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  CategoriesScreen({super.key});
+  const CategoriesScreen({super.key});
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: DefaultAppBar(
@@ -27,7 +27,7 @@ class CategoriesScreen extends StatelessWidget {
                   CompaniesCubit cubit = CompaniesCubit.get(context);
                   if (state is CategoriesLoadingDataState ||
                       state is CompaniesInitialState) {
-                    return Center(
+                    return const Center(
                       child: CircularProgressIndicator(),
                     );
                   } else {
@@ -45,7 +45,7 @@ class CategoriesScreen extends StatelessWidget {
                           // ),
                           Expanded(
                               child: GridView.builder(
-                            itemCount: cubit.categories!.length,
+                            itemCount: cubit.categories.length,
                             gridDelegate:
                                 const SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 1,
@@ -53,7 +53,7 @@ class CategoriesScreen extends StatelessWidget {
                                     mainAxisSpacing: 10),
                             itemBuilder: (context, index) {
                               return CategoryItem(
-                                category: cubit.categories![index],
+                                category: cubit.categories[index],
                                 cubit: cubit,
                               );
                             },

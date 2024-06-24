@@ -63,21 +63,21 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
                           NavigationServices.navigateTo(
                               context, const LoginScreen());
                         },
+                        hasPadding: false,
+                        color: Palette.black.withOpacity(.2),
                         child: Text(
                           LangKeys.LOGIN.tr(),
                           style: context.textTheme.headlineSmall!
                               .copyWith(color: Colors.white, fontSize: 16),
                         ),
-                        hasPadding: false,
-                        color: Palette.black.withOpacity(.2),
                       ),
                     ))
                 : const Text('')
-            : SizedBox()
+            : const SizedBox()
       ],
     );
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(50);
+  Size get preferredSize => const Size.fromHeight(50);
 }

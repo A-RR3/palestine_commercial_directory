@@ -12,7 +12,7 @@ class CustomDisableWidget extends StatelessWidget {
         absorbing: true,
         child: Container(
           color: Colors.black.withOpacity(0.5),
-          child: Center(
+          child: const Center(
             child: CircularProgressIndicator(),
           ),
         ),

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:videos_application/core/utils/extensions.dart';
-import 'package:videos_application/modules/admin/screens/users/cubit/users_cubit.dart';
-import 'package:videos_application/shared/widgets/custom_text_widget.dart';
 
 class MySearchBar extends StatelessWidget {
-  MySearchBar({
+  const MySearchBar({
     super.key,
     required this.hint,
     this.onChanged,
@@ -29,10 +27,10 @@ class MySearchBar extends StatelessWidget {
               focusedBorder: InputBorder.none,
               enabledBorder: InputBorder.none,
               hintStyle: context.textTheme.headlineSmall,
-              contentPadding: EdgeInsets.symmetric(vertical: 10),
+              contentPadding: const EdgeInsets.symmetric(vertical: 10),
               hintText: hint,
               hintMaxLines: 1,
-              icon: Icon(Icons.search),
+              icon: const Icon(Icons.search),
               border: InputBorder.none,
               alignLabelWithHint: true),
         ));

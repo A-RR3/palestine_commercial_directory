@@ -1,17 +1,10 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:videos_application/core/presentation/Palette.dart';
 import 'package:videos_application/core/utils/navigation_services.dart';
 import 'package:videos_application/core/values/cache_keys.dart';
 import 'package:videos_application/core/values/constants.dart';
-import 'package:videos_application/core/values/lang_keys.dart';
 import 'package:videos_application/modules/home/screens/update_user_data_screen.dart';
 import 'package:videos_application/modules/home/widgets/app_drawer_tile.dart';
-import 'package:videos_application/modules/upload_video_modules/upload_video_screen.dart';
 import 'package:videos_application/shared/network/local/cache_helper.dart';
 import 'package:videos_application/shared/widgets/custom_text_widget.dart';
 
@@ -20,7 +13,7 @@ import '../../modules/home/cubit/home_cubit.dart';
 import '../network/remote/end_points.dart';
 
 class CustomDrawer extends StatelessWidget {
-  CustomDrawer({super.key, required this.cubit});
+  const CustomDrawer({super.key, required this.cubit});
   final HomeCubit cubit;
 
   @override
@@ -43,18 +36,17 @@ class CustomDrawer extends StatelessWidget {
                   ? Row(
                       children: [
                         cubit.user?.uImage != null
-                            ? Container(
+                            ? defaultContainer(
                                 width: 90,
                                 height: 90,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(40)),
                                 child: ClipOval(
                                     child: Image.network(
                                   '${EndPointsConstants.usersStorage}${cubit.user?.uImage}',
                                   fit: BoxFit.cover,
                                 )),
                               )
-                            : defaultPersonImage,
+                            : defaultContainer(
+                                child: defaultPersonImage, hasShadow: true),
                         hSpace(),
                         Expanded(
                           child: Column(
@@ -85,7 +77,7 @@ class CustomDrawer extends StatelessWidget {
                         )
                       ],
                     )
-                  : SizedBox()),
+                  : const SizedBox()),
           AppDrawerTile(
             index: 0,
             onTap: () {

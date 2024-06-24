@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'package:bloc/bloc.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
@@ -24,7 +22,7 @@ class LocationCubit extends Cubit<LocationStates> {
 
   LatLng? companyLocation;
 
-  LatLng? currentP = null;
+  LatLng? currentP;
 
   StreamSubscription<Position>? _locationSubscription;
 
@@ -43,11 +41,11 @@ class LocationCubit extends Cubit<LocationStates> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Location Services Disabled'),
-          content: Text('Please enable location services to continue.'),
+          title: const Text('Location Services Disabled'),
+          content: const Text('Please enable location services to continue.'),
           actions: <Widget>[
             TextButton(
-              child: DefaultText(
+              child: const DefaultText(
                 text: 'Cancel',
               ),
               onPressed: () {
@@ -55,7 +53,7 @@ class LocationCubit extends Cubit<LocationStates> {
               },
             ),
             TextButton(
-              child: DefaultText(text: 'Settings'),
+              child: const DefaultText(text: 'Settings'),
               onPressed: () {
                 Navigator.of(context).pop();
                 Geolocator.openLocationSettings();
@@ -109,7 +107,7 @@ class LocationCubit extends Cubit<LocationStates> {
     _determinePosition().then(
       (pos) async {
         currentP = LatLng(pos.latitude, pos.longitude);
-        print('current :${currentP}');
+        print('current :$currentP');
         emit(UpdateLocationState());
         await _getPolylinePoints();
         // _getLocationUpdates();
@@ -140,7 +138,7 @@ class LocationCubit extends Cubit<LocationStates> {
           print('distance: $distance');
 
           currentP = LatLng(position.latitude, position.longitude);
-          print('updated: ${currentP}');
+          print('updated: $currentP');
           if (distance < 50) {
             return; // Ignore updates if the distance is less than 100 meters
           }
@@ -157,10 +155,10 @@ class LocationCubit extends Cubit<LocationStates> {
 
   Future<void> _cameraToPosition(LatLng pos) async {
     final GoogleMapController controller = await mapController.future;
-    CameraPosition _newCameraPosition =
+    CameraPosition newCameraPosition =
         CameraPosition(target: pos, zoom: 13, tilt: 50.0);
     await controller.animateCamera(
-      CameraUpdate.newCameraPosition(_newCameraPosition),
+      CameraUpdate.newCameraPosition(newCameraPosition),
     );
   }
 
@@ -192,9 +190,9 @@ class LocationCubit extends Cubit<LocationStates> {
       // Check for errors in the result
       if (result.status == 'OK' && result.points.isNotEmpty) {
         print('Points: ${result.points}');
-        result.points.forEach((PointLatLng point) {
+        for (var point in result.points) {
           polylineCoordinates.add(LatLng(point.latitude, point.longitude));
-        });
+        }
         generatePolyLineFromPoints(polylineCoordinates);
       } else {
         print('Error getting polyline points: ${result.errorMessage}');
@@ -227,7 +225,7 @@ class LocationCubit extends Cubit<LocationStates> {
   }
 
   void generatePolyLineFromPoints(List<LatLng> polylineCoordinates) async {
-    PolylineId id = PolylineId('poly');
+    PolylineId id = const PolylineId('poly');
     Polyline polyline = Polyline(
         polylineId: id,
         color: Palette.adminPageIconsColor,

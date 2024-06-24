@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:videos_application/core/localization/localization_settings.dart';
-import 'package:videos_application/modules/home/cubit/home_cubit.dart';
 import 'package:videos_application/modules/splash/splash_screen.dart';
 import 'package:videos_application/shared/network/remote/dio_helper.dart';
 import 'package:videos_application/permission_cubit/permission_cubit.dart';

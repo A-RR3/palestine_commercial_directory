@@ -33,9 +33,9 @@ class CustomMaterialBotton extends StatelessWidget {
       height: height ?? 50,
       disabledColor: Colors.black.withOpacity(.8),
       disabledTextColor: Colors.white.withOpacity(.8),
-      child: child,
       padding:
-          hasPadding ? EdgeInsets.symmetric(horizontal: 20) : EdgeInsets.zero,
+          hasPadding ? const EdgeInsets.symmetric(horizontal: 20) : EdgeInsets.zero,
+      child: child,
     );
   }
 }

@@ -2,6 +2,7 @@ class PostModel {
   final int? pId;
   final String? pTitle;
   final String? pContent;
+  final String? pContentAr;
   final int? pUserId;
   final String? pVideo;
   final String? pImage;
@@ -12,6 +13,7 @@ class PostModel {
   PostModel({
     this.pTitle,
     this.pContent,
+    this.pContentAr,
     this.pUserId,
     this.pVideo,
     this.pImage,
@@ -22,26 +24,32 @@ class PostModel {
   });
 
   factory PostModel.fromMap(Map<String, dynamic> json) => PostModel(
-    pTitle: json["p_title"],
-    pContent: json["p_content"],
-    pUserId: json["p_user_id"],
-    pVideo: json["p_video"],
-    pImage: json["p_image"],
-    pType: json["p_type"],
-    updatedAt: json["updated_at"] == null ? null : DateTime.parse(json["updated_at"]),
-    createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
-    pId: json["p_id"],
-  );
+        pTitle: json["p_title"],
+        pContent: json["p_content"],
+        pContentAr: json["p_content_ar"],
+        pUserId: json["p_user_id"],
+        pVideo: json["p_video"],
+        pImage: json["p_image"],
+        pType: json["p_type"],
+        updatedAt: json["updated_at"] == null
+            ? null
+            : DateTime.parse(json["updated_at"]),
+        createdAt: json["created_at"] == null
+            ? null
+            : DateTime.parse(json["created_at"]),
+        pId: json["p_id"],
+      );
 
   Map<String, dynamic> toMap() => {
-    "p_title": pTitle,
-    "p_content": pContent,
-    "p_user_id": pUserId,
-    "p_video": pVideo,
-    "p_image": pImage,
-    "p_type": pType,
-    "updated_at": updatedAt?.toIso8601String(),
-    "created_at": createdAt?.toIso8601String(),
-    "p_id": pId,
-  };
+        "p_title": pTitle,
+        "p_content": pContent,
+        "p_content_ar": pContentAr,
+        "p_user_id": pUserId,
+        "p_video": pVideo,
+        "p_image": pImage,
+        "p_type": pType,
+        "updated_at": updatedAt?.toIso8601String(),
+        "created_at": createdAt?.toIso8601String(),
+        "p_id": pId,
+      };
 }

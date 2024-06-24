@@ -1,6 +1,4 @@
-import 'dart:io';
 
-import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -67,8 +65,8 @@ class UpdateCubit extends Cubit<UpdateStates> {
     homeCubit.user!.uPhone != phone;
 
     //image
-    print('isImageSelected: ${isImageSelected}');
-    print('selectedImage: ${selectedImage}');
+    print('isImageSelected: $isImageSelected');
+    print('selectedImage: $selectedImage');
 
     FormData? formData;
     if (isImageSelected) {
@@ -94,7 +92,7 @@ class UpdateCubit extends Cubit<UpdateStates> {
     }
 
     await DioHelper.postData(
-            url: 'update',
+            url: EndPointsConstants.update,
             token: userToken,
             data: formData,
             contentType: 'multipart/form-data')
@@ -120,7 +118,7 @@ class UpdateCubit extends Cubit<UpdateStates> {
       isImageSelected = true;
       selectedImage = pickedFile;
       emit(ImageUploadedSuccessfullyState());
-      print('xfile: ${pickedFile}');
+      print('xfile: $pickedFile');
       print('xfile path: ${pickedFile.path}');
       print('xfile name: ${pickedFile.name}');
       print('xfile mime: ${pickedFile.mimeType}');

@@ -1,5 +1,4 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -20,7 +19,7 @@ class CompanyItemWidget extends StatelessWidget {
   CompanyItemWidget(this.company, {super.key})
       : _companyLat = LatLng(company.latitude!, company.logitude!);
   CompanyModel company;
-  LatLng _companyLat;
+  final LatLng _companyLat;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +30,7 @@ class CompanyItemWidget extends StatelessWidget {
           showModalBottomSheet(
             context: context,
             showDragHandle: true,
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(25), topRight: Radius.circular(25)),
             ),
@@ -43,7 +42,7 @@ class CompanyItemWidget extends StatelessWidget {
               return BlocProvider(
                 create: (context) =>
                     LocationCubit()..checkLocationServiceIsEnabled(context),
-                child: Container(
+                child: SizedBox(
                     height: context.deviceSize.height,
                     child: SingleChildScrollView(
                         child: Padding(
@@ -73,7 +72,7 @@ class CompanyItemWidget extends StatelessWidget {
               titleAlignment: ListTileTitleAlignment.center,
               minVerticalPadding: 0,
               title: Text(
-                lang == enCode ? company!.cName! : company!.cNameAR!,
+                lang == enCode ? company.cName! : company.cNameAR!,
                 style: context.textTheme.headlineSmall!.copyWith(fontSize: 23),
               ),
               subtitle: DefaultText(
@@ -93,7 +92,7 @@ class CompanyItemWidget extends StatelessWidget {
         ));
   }
 
-  _sheetContent(BuildContext context) => Container(
+  _sheetContent(BuildContext context) => SizedBox(
       height: context.deviceSize.height * .6,
       width: double.infinity,
       child: BlocConsumer<LocationCubit, LocationStates>(
@@ -109,13 +108,13 @@ class CompanyItemWidget extends StatelessWidget {
                 children: [
                   TextButton(
                       onPressed: () => locationCubit.onPressOrigin(),
-                      child: DefaultText(
+                      child: const DefaultText(
                         text: 'origin',
                         color: Palette.scaffoldAppBarColor,
                       )),
                   TextButton(
                       onPressed: () => locationCubit.onPressDestination(),
-                      child: DefaultText(
+                      child: const DefaultText(
                         text: 'company',
                         color: Palette.scaffoldAppBarColor,
                       ))
@@ -123,7 +122,7 @@ class CompanyItemWidget extends StatelessWidget {
               ),
               Expanded(
                   child: locationCubit.currentP == null
-                      ? Center(
+                      ? const Center(
                           child: CircularProgressIndicator(),
                         )
                       : GoogleMapWidget(
