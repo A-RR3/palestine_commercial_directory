@@ -1,8 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:videos_application/core/localization/localization_settings.dart';
-import 'package:videos_application/modules/auth/login/login_screen.dart';
+import 'package:videos_application/modules/home/cubit/home_cubit.dart';
 import 'package:videos_application/modules/splash/splash_screen.dart';
 import 'package:videos_application/shared/network/remote/dio_helper.dart';
 import 'package:videos_application/permission_cubit/permission_cubit.dart';
@@ -13,29 +14,26 @@ import 'core/values/cache_keys.dart';
 import 'core/values/constants.dart';
 import 'modules/admin/cubit/admin_cubit.dart';
 import 'shared/network/local/cache_helper.dart';
-import 'shared/network/remote/dio_helper.dart';
 
 void main() async {
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+  ));
   WidgetsFlutterBinding.ensureInitialized();
   DioHelper.init();
   Bloc.observer = MyBlocObserver();
   await CacheHelper.init();
-  userLocale = Locale(LocalizationSettings.defaultLanguage);
-  CacheHelper.setData(
-    key: CacheKeys.lang.name,
-    value: enCode,
-  );
 
   userToken = CacheHelper.getData(CacheKeys.token.name);
-  isLogged = CacheHelper.getData(CacheKeys.isLogged.name) ?? false;
   userId = CacheHelper.getData(CacheKeys.userId.name);
-  userRole = CacheHelper.getData(CacheKeys.userRole.name);
+  // userRole = CacheHelper.getData(CacheKeys.userRole.name);
+  Locale startLocale = Locale(CacheHelper.getData(CacheKeys.lang.name));
 
   runApp(EasyLocalization(
     supportedLocales: LocalizationSettings.localesList,
     path: 'assets/lang',
     fallbackLocale: LocalizationSettings.defaultLocale,
-    startLocale: LocalizationSettings.defaultLocale,
+    startLocale: startLocale,
     child: const MyApp(),
   ));
 }
@@ -46,24 +44,28 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    appLocale = context.locale;
+    CacheHelper.setData(
+        key: CacheKeys.lang.name, value: context.locale.toString());
+
     return MultiBlocProvider(
       providers: [
         BlocProvider(
           create: (context) => PermissionsCubit(),
         ),
         BlocProvider(
-          create: (context) => AdminCubit()..getUsersData(),
-        )
+          create: (context) => AdminCubit(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        locale: context.locale,
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
+        locale: context.locale,
         darkTheme: darkTheme,
         theme: lightTheme,
         themeMode: ThemeMode.light,
-        home: SplashScreen(),
+        home: const SplashScreen(),
       ),
     );
   }

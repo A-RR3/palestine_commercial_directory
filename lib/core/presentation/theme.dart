@@ -1,33 +1,76 @@
 import 'package:flutter/material.dart';
 import 'package:videos_application/core/presentation/fonts.dart';
-
 import '../presentation/Palette.dart';
 
 ThemeData get lightTheme => ThemeData(
-    scaffoldBackgroundColor: Colors.white,
-    useMaterial3: false,
-    appBarTheme: appBarTheme(),
-    bottomNavigationBarTheme: navBarTheme(),
-    textTheme: textTheme,
-    floatingActionButtonTheme: const FloatingActionButtonThemeData(
-        backgroundColor: Palette.primaryColor));
-
-ThemeData get darkTheme => ThemeData(
-      scaffoldBackgroundColor: Palette.darkPrimaryColor,
+      scaffoldBackgroundColor: Palette.scaffoldBackground,
       useMaterial3: false,
       appBarTheme: appBarTheme(
-        textColor: Colors.white,
-        backgroundColor: Palette.darkPrimaryColor,
-        iconColor: Colors.white,
-      ),
-      bottomNavigationBarTheme: navBarTheme(
-          backgroundColor: Palette.darkPrimaryColor,
-          unselectedItemColor: Colors.grey),
+          backgroundColor: Palette.scaffoldAppBarColor,
+          textColor: Colors.black,
+          iconColor: Colors.white),
+      bottomNavigationBarTheme: navBarTheme(),
       textTheme: textTheme,
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
-        backgroundColor: Palette.primaryColor,
+          backgroundColor: Palette.primaryColor),
+      // cardColor: ,
+      tabBarTheme: TabBarTheme(
+          labelStyle: TextStyle(
+              color: Colors.black, fontFamily: Fonts.bold, fontSize: 20)),
+      cardTheme: CardTheme(
+        shadowColor: Colors.red,
+        color: Palette.scaffoldAppBarColor,
+        elevation: 5.0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+      ),
+      iconTheme: IconThemeData(color: Palette.adminPageIconsColor),
+
+      listTileTheme: ListTileThemeData(
+        minVerticalPadding: 10,
+        iconColor: Palette.black,
+        titleTextStyle: TextStyle(
+          fontFamily: Fonts.medium,
+          color: Colors.black,
+          fontSize: 22,
+        ),
+        subtitleTextStyle: TextStyle(
+            fontFamily: Fonts.tajawwalBold,
+            color: Palette.adminPageIconsColor,
+            fontSize: 18),
+        tileColor: Palette.scaffoldAppBarColor,
+        contentPadding: const EdgeInsets.all(20),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(35.0),
+        ),
+        minLeadingWidth: 40,
       ),
     );
+
+ThemeData get darkTheme => ThemeData(
+    scaffoldBackgroundColor: const Color(0xffA18089),
+    useMaterial3: false,
+    appBarTheme: appBarTheme(
+      textColor: const Color(0xFF263238),
+      backgroundColor: Palette.darkPrimaryColor,
+      iconColor: Colors.white,
+    ),
+    bottomNavigationBarTheme: navBarTheme(
+        backgroundColor: Palette.darkPrimaryColor,
+        unselectedItemColor: Colors.grey),
+    textTheme: textTheme,
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      backgroundColor: Palette.primaryColor,
+    ),
+    cardTheme: CardTheme(
+      color: const Color(0xFF37474F),
+      elevation: 5.0,
+      shadowColor: Colors.deepPurple,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15.0),
+      ),
+    ));
 
 BottomNavigationBarThemeData navBarTheme(
     {Color? unselectedItemColor, Color? backgroundColor}) {
@@ -53,15 +96,17 @@ AppBarTheme appBarTheme(
     );
 
 TextTheme get textTheme => TextTheme(
-    bodyLarge: TextStyle(
-        fontSize: 20, fontWeight: FontWeight.w500, fontFamily: Fonts.medium),
-    bodyMedium: TextStyle(
-        fontSize: 17, fontWeight: FontWeight.w500, fontFamily: Fonts.medium),
-    bodySmall: TextStyle(
-        fontSize: 14, fontWeight: FontWeight.w500, fontFamily: Fonts.medium),
-    labelLarge: TextStyle(
-        fontSize: 25, fontWeight: FontWeight.w800, fontFamily: Fonts.bold),
-    labelSmall: TextStyle(
-        fontSize: 20, fontWeight: FontWeight.w500, fontFamily: Fonts.medium),
-    labelMedium: TextStyle(
-        fontSize: 23, fontWeight: FontWeight.w500, fontFamily: Fonts.bold));
+      bodyLarge: TextStyle(
+          fontSize: 20, fontWeight: FontWeight.w600, fontFamily: Fonts.medium),
+      bodyMedium: TextStyle(
+          fontSize: 17, fontWeight: FontWeight.w600, fontFamily: Fonts.medium),
+      bodySmall: TextStyle(
+          fontSize: 14, fontWeight: FontWeight.w600, fontFamily: Fonts.medium),
+      labelLarge: TextStyle(
+          fontSize: 24, fontWeight: FontWeight.w600, fontFamily: Fonts.bold),
+      labelSmall: TextStyle(
+          fontSize: 20, fontWeight: FontWeight.w600, fontFamily: Fonts.medium),
+      labelMedium: TextStyle(
+          fontSize: 22, fontWeight: FontWeight.w500, fontFamily: Fonts.medium),
+      headlineSmall: TextStyle(fontSize: 23, fontWeight: FontWeight.w500),
+    );

@@ -7,6 +7,16 @@ mixin CompressVideoMixin<T> on Cubit<T> {
   MediaInfo? mediaInfo;
 
   Future<void> compressVideo(String filePath) async {
+// <<<<<<< admin_panel_backup
+//     // emit(VideoCompressionLoading());
+//     try {
+//       print('original file path: $filePath');
+//       mediaInfo = await VideoCompress.compressVideo(
+//         filePath,
+//         quality: VideoQuality.MediumQuality,
+//         deleteOrigin: false,
+//       );
+// =======
     emit(CompressVideoLoadingState() as T);
     print('original file path: ${filePath}');
     await VideoCompress.compressVideo(
@@ -15,6 +25,7 @@ mixin CompressVideoMixin<T> on Cubit<T> {
       deleteOrigin: false,
     ).then((value) {
       mediaInfo = value;
+// >>>>>>> main
       print('final path after compress: ${mediaInfo?.path}');
       emit(CompressVideoSuccessState() as T);
     }).catchError((error) {

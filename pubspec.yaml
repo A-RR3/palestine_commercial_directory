@@ -47,6 +47,12 @@ dependencies:
   flutter_animate: ^4.5.0
   fluttertoast: ^8.2.5
   video_compress: ^3.1.2
+  flutter_svg: ^2.0.10+1
+  google_maps_flutter: ^2.7.0
+  transparent_image: ^2.0.1
+  geolocator: ^12.0.0
+  location: ^6.0.2
+  flutter_polyline_points: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -74,6 +80,7 @@ flutter:
   assets:
     - assets/lang/
     - assets/images/
+    - assets/icons/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -87,27 +94,24 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   fonts:
-    - family: ManropeLight
+    - family: ComicSansNormal
       fonts:
-        - asset: assets/fonts/manrope.light.otf
-    - family: ManropeBold
+        - asset: assets/fonts/comic-sans-ms-normal.otf
+    - family: ComicSansBold
       fonts:
-        - asset: assets/fonts/manrope.bold.otf
-    - family: ManropeMedium
-      fonts:
-        - asset: assets/fonts/manrope.medium.otf
-    - family: CairoLight
-      fonts:
-        - asset: assets/fonts/Cairo-Light.ttf
+        - asset: assets/fonts/comic_sans_ms_bold.otf
     - family: CairoMedium
       fonts:
         - asset: assets/fonts/Cairo-Medium.ttf
-    - family: CairoBold
-      fonts:
-        - asset: assets/fonts/Cairo-Bold.ttf
     - family: LobsterRegular
       fonts:
         - asset: assets/fonts/Lobster-Regular.ttf
+    - family: TajawwalBold
+      fonts:
+        - asset: assets/fonts/Tajawal-Black-Regular.ttf
+    - family: TajawwalRegular
+      fonts:
+        - asset: assets/fonts/Tajawal-Regular.ttf
   # example:
   # fonts:
   #   - family: Schyler

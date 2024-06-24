@@ -10,7 +10,7 @@ class MyTextFormField extends StatelessWidget {
   final TextInputAction? textInputAction;
 
 
-  const MyTextFormField({
+  const MyTextFormField({super.key, 
     required this.label,
     required this.controller,
     this.keyboardType = TextInputType.text,
@@ -31,14 +31,14 @@ class MyTextFormField extends StatelessWidget {
       decoration: InputDecoration(
         labelText: label,
         prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
-        contentPadding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
+        contentPadding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Colors.grey),
+          borderSide: const BorderSide(color: Colors.grey),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Colors.grey),
+          borderSide: const BorderSide(color: Colors.grey),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
@@ -46,11 +46,11 @@ class MyTextFormField extends StatelessWidget {
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Colors.red),
+          borderSide: const BorderSide(color: Colors.red),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Colors.red),
+          borderSide: const BorderSide(color: Colors.red),
         ),
       ),
     );
