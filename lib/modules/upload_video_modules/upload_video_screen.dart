@@ -20,7 +20,7 @@ class UploadVideoScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PlaceHolder();
+    return Placeholder();
 // <<<<<<< admin_panel_backup
 //     return Scaffold(
 //       appBar: AppBar(
