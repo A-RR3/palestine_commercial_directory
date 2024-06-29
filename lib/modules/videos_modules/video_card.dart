@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
-import 'package:videos_application/models/basic_models/post_model.dart';
-import 'package:videos_application/modules/videos_modules/videos_cubit/videos_cubit.dart';
-
+import 'package:palestine_commercial_directory/models/basic_models/post_model.dart';
+import 'package:palestine_commercial_directory/modules/videos_modules/videos_cubit/videos_cubit.dart';
 
 class VideoCard extends StatefulWidget {
   final PostModel postModel;

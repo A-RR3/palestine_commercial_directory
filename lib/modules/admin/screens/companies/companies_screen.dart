@@ -1,16 +1,17 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:videos_application/core/values/constants.dart';
-import 'package:videos_application/core/values/lang_keys.dart';
-import 'package:videos_application/models/company_model.dart';
-import 'package:videos_application/modules/admin/screens/companies/cubit/companies_cubit.dart';
-import 'package:videos_application/modules/admin/screens/companies/cubit/companies_states.dart';
-import 'package:videos_application/modules/admin/screens/companies/widgets/company_list_item.dart';
-import 'package:videos_application/shared/widgets/default_app_bar.dart';
+import 'package:palestine_commercial_directory/core/values/constants.dart';
+import 'package:palestine_commercial_directory/core/values/lang_keys.dart';
+import 'package:palestine_commercial_directory/models/company_model.dart';
+import 'package:palestine_commercial_directory/modules/admin/screens/companies/cubit/companies_cubit.dart';
+import 'package:palestine_commercial_directory/modules/admin/screens/companies/cubit/companies_states.dart';
+import 'package:palestine_commercial_directory/modules/admin/screens/companies/widgets/company_list_item.dart';
+import 'package:palestine_commercial_directory/shared/widgets/default_app_bar.dart';
 
 class CompaniesScreen extends StatelessWidget {
-  const CompaniesScreen({super.key, required this.categoryId, required this.cubit});
+  const CompaniesScreen(
+      {super.key, required this.categoryId, required this.cubit});
 
   final int categoryId;
   final CompaniesCubit cubit;

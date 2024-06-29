@@ -1,10 +1,9 @@
 import 'dart:convert';
 
-import 'package:videos_application/models/user_model.dart';
+import 'package:palestine_commercial_directory/models/user_model.dart';
 
 LoginModel loginModelFromJson(String str) =>
     LoginModel.fromJson(json.decode(str));
-
 
 class LoginModel {
   final bool status;

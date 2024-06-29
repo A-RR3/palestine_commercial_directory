@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:palestine_commercial_directory/core/utils/extensions.dart';
 
 // abstract class ScrollStates {}
 //
@@ -11,7 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ScrollCubit extends Cubit<bool> {
   final ScrollController _scrollController = ScrollController();
-
+  // final double? screenHeight;
   ScrollCubit() : super(false) {
     _scrollController.addListener(_scrollListener);
   }
@@ -21,8 +22,14 @@ class ScrollCubit extends Cubit<bool> {
   ScrollController get scrollController => _scrollController;
 
   void _scrollListener() {
-    if (_scrollController.position.maxScrollExtent ==
-        _scrollController.offset) {
+    //checks if I have scrolled at the end of the list or/ the page,
+    // bool condition = screenHeight == null
+    //     ? (_scrollController.position.maxScrollExtent ==
+    //         _scrollController.offset)
+    //     : (_scrollController.position.pixels >=
+    //         _scrollController.position.maxScrollExtent);
+    if (_scrollController.position.pixels >=
+        _scrollController.position.maxScrollExtent) {
       emit(true);
     } else {
       emit(false);

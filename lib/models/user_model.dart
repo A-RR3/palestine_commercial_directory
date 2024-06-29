@@ -1,4 +1,4 @@
-import 'package:videos_application/models/pagination_model.dart';
+import 'package:palestine_commercial_directory/models/pagination_model.dart';
 import 'company_model.dart';
 
 class UserModel {

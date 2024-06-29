@@ -1,5 +1,5 @@
-import 'package:videos_application/core/values/cache_keys.dart';
-import 'package:videos_application/shared/network/local/cache_helper.dart';
+import 'package:palestine_commercial_directory/core/values/cache_keys.dart';
+import 'package:palestine_commercial_directory/shared/network/local/cache_helper.dart';
 
 class Fonts {
   static const String comicSansBold = 'ComicSansBold';

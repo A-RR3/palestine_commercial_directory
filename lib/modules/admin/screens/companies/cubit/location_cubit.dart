@@ -5,8 +5,8 @@ import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:videos_application/modules/admin/screens/companies/cubit/location_states.dart';
-import 'package:videos_application/shared/widgets/custom_text_widget.dart';
+import 'package:palestine_commercial_directory/modules/admin/screens/companies/cubit/location_states.dart';
+import 'package:palestine_commercial_directory/shared/widgets/custom_text_widget.dart';
 import '../../../../../core/presentation/Palette.dart';
 import '../../../../../core/values/constants.dart';
 

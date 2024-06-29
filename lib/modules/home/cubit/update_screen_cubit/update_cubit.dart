@@ -1,11 +1,10 @@
-
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:videos_application/models/login_model.dart';
-import 'package:videos_application/modules/home/cubit/home_cubit.dart';
-import 'package:videos_application/modules/home/cubit/update_screen_cubit/update_user_states.dart';
-import 'package:videos_application/shared/network/local/cache_helper.dart';
+import 'package:palestine_commercial_directory/models/login_model.dart';
+import 'package:palestine_commercial_directory/modules/home/cubit/home_cubit.dart';
+import 'package:palestine_commercial_directory/modules/home/cubit/update_screen_cubit/update_user_states.dart';
+import 'package:palestine_commercial_directory/shared/network/local/cache_helper.dart';
 
 import '../../../../core/values/cache_keys.dart';
 import '../../../../core/values/constants.dart';

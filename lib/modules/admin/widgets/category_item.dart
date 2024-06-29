@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
-import 'package:videos_application/core/utils/extensions.dart';
-import 'package:videos_application/core/values/constants.dart';
-import 'package:videos_application/models/categories_model.dart';
-import 'package:videos_application/modules/admin/screens/companies/cubit/companies_cubit.dart';
-import 'package:videos_application/shared/network/local/cache_helper.dart';
+import 'package:palestine_commercial_directory/core/utils/extensions.dart';
+import 'package:palestine_commercial_directory/core/values/constants.dart';
+import 'package:palestine_commercial_directory/models/categories_model.dart';
+import 'package:palestine_commercial_directory/modules/admin/screens/companies/cubit/companies_cubit.dart';
+import 'package:palestine_commercial_directory/shared/network/local/cache_helper.dart';
 import '../../../core/utils/navigation_services.dart';
 import '../../../core/values/cache_keys.dart';
 import '../screens/companies/companies_screen.dart';

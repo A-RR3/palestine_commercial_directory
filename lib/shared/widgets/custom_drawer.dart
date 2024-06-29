@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:videos_application/core/utils/navigation_services.dart';
-import 'package:videos_application/core/values/cache_keys.dart';
-import 'package:videos_application/core/values/constants.dart';
-import 'package:videos_application/modules/home/screens/update_user_data_screen.dart';
-import 'package:videos_application/modules/home/widgets/app_drawer_tile.dart';
-import 'package:videos_application/shared/network/local/cache_helper.dart';
-import 'package:videos_application/shared/widgets/custom_text_widget.dart';
+import 'package:palestine_commercial_directory/core/utils/navigation_services.dart';
+import 'package:palestine_commercial_directory/core/values/cache_keys.dart';
+import 'package:palestine_commercial_directory/core/values/constants.dart';
+import 'package:palestine_commercial_directory/modules/home/screens/update_user_data_screen.dart';
+import 'package:palestine_commercial_directory/modules/home/widgets/app_drawer_tile.dart';
+import 'package:palestine_commercial_directory/shared/network/local/cache_helper.dart';
+import 'package:palestine_commercial_directory/shared/widgets/custom_text_widget.dart';
 
 import '../../core/values/asset_keys.dart';
 import '../../modules/home/cubit/home_cubit.dart';
@@ -54,9 +54,11 @@ class CustomDrawer extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               DefaultText(
-                                  text: isEnglish
-                                      ? cubit.user!.uName!
-                                      : cubit.user!.uNameAr!),
+                                text: isEnglish
+                                    ? cubit.user!.uName!
+                                    : cubit.user!.uNameAr!,
+                                color: Colors.black,
+                              ),
                               vSpace(5),
                               GestureDetector(
                                   onTap: () {

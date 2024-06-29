@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:videos_application/core/utils/extensions.dart';
+import 'package:palestine_commercial_directory/core/utils/extensions.dart';
 
 import '../../core/presentation/Palette.dart';
 
@@ -15,8 +15,7 @@ class DefaultText extends StatelessWidget {
     return Text(
       text,
       style: style ??
-          context.textTheme.bodyLarge!
-              .copyWith(color: color ?? Palette.border),
+          context.textTheme.bodyLarge!.copyWith(color: color ?? Palette.border),
     );
   }
 }

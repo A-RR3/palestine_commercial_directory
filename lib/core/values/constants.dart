@@ -34,15 +34,21 @@ Widget hSpace([double width = 20]) => SizedBox(
 const InputBorder loginInputBorder = UnderlineInputBorder(
     borderSide: BorderSide(width: 1.5, color: Palette.border));
 
-void showToast({required String? meg, required ToastStates toastState}) async {
+void showToast(
+    {required String? meg,
+    required ToastStates toastState,
+    Color? color}) async {
   await Fluttertoast.showToast(
       msg: meg!,
       toastLength: Toast.LENGTH_LONG,
       gravity: ToastGravity.BOTTOM,
       timeInSecForIosWeb: 5,
-      backgroundColor:
-          toastState == ToastStates.error ? Colors.red : Colors.green,
-      textColor: Colors.white,
+      backgroundColor: toastState == ToastStates.error
+          ? Colors.red
+          : toastState == ToastStates.success
+              ? Colors.green
+              : Color(0xffE4CF03),
+      textColor: color ?? Colors.white,
       fontSize: 16.0);
 }
 

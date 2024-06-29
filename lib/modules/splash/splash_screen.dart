@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:videos_application/core/presentation/palette.dart';
-import 'package:videos_application/core/utils/extensions.dart';
-import 'package:videos_application/core/values/asset_keys.dart';
-import 'package:videos_application/core/values/constants.dart';
-import 'package:videos_application/modules/home/home_screen.dart';
+import 'package:palestine_commercial_directory/core/presentation/palette.dart';
+import 'package:palestine_commercial_directory/core/utils/extensions.dart';
+import 'package:palestine_commercial_directory/core/values/asset_keys.dart';
+import 'package:palestine_commercial_directory/core/values/constants.dart';
+import 'package:palestine_commercial_directory/modules/home/home_screen.dart';
 
 import '../../core/presentation/fonts.dart';
 

@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:videos_application/modules/admin/screens/companies/cubit/companies_cubit.dart';
-import 'package:videos_application/modules/admin/screens/companies/cubit/companies_states.dart';
-import 'package:videos_application/shared/widgets/default_app_bar.dart';
+import 'package:palestine_commercial_directory/modules/admin/screens/companies/cubit/companies_cubit.dart';
+import 'package:palestine_commercial_directory/modules/admin/screens/companies/cubit/companies_states.dart';
+import 'package:palestine_commercial_directory/shared/widgets/default_app_bar.dart';
 import '../../../../core/values/lang_keys.dart';
 import '../../widgets/category_item.dart';
 

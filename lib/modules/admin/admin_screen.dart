@@ -1,12 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:videos_application/core/utils/extensions.dart';
-import 'package:videos_application/core/utils/navigation_services.dart';
-import 'package:videos_application/core/values/constants.dart';
-import 'package:videos_application/modules/admin/cubit/admin_cubit.dart';
-import 'package:videos_application/modules/admin/cubit/states.dart';
-import 'package:videos_application/shared/widgets/custom_text_widget.dart';
+import 'package:palestine_commercial_directory/core/utils/extensions.dart';
+import 'package:palestine_commercial_directory/core/utils/navigation_services.dart';
+import 'package:palestine_commercial_directory/core/values/constants.dart';
+import 'package:palestine_commercial_directory/modules/admin/cubit/admin_cubit.dart';
+import 'package:palestine_commercial_directory/modules/admin/cubit/states.dart';
+import 'package:palestine_commercial_directory/shared/widgets/custom_text_widget.dart';
 import '../../core/presentation/Palette.dart';
 import '../../core/values/lang_keys.dart';
 

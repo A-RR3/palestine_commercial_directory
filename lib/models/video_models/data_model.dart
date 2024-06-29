@@ -1,4 +1,4 @@
-// import 'package:videos_application/models/video_models/video_model.dart';
+// import 'package:palestine_commercial_directory/models/video_models/video_model.dart';
 //
 // class DataModel {
 //   final List<VideoModel>? videos;

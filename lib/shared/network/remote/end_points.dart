@@ -16,7 +16,7 @@ const USERS_SEARCH = 'users/search';
 
 class EndPointsConstants {
   // static const String subBaseUrl = 'http://192.168.1.10/BFO/palestine_commercial_directory_laravel';
-  static const String subBaseUrl = 'http://192.168.1.18/laravel_project';
+  static const String subBaseUrl = 'http://192.168.1.23/laravel_project';
 
   static const String baseUrl = '$subBaseUrl/public/api/';
   static const String post = 'post';
@@ -27,6 +27,7 @@ class EndPointsConstants {
       '$subBaseUrl/storage/app/public/posts/videos/';
   static const String posts = 'posts';
   static const String update = 'update';
+  static const String toggleLike = 'posts/toggleLike';
 
   static const String videos = 'videos';
 

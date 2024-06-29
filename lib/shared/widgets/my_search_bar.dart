@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:videos_application/core/utils/extensions.dart';
+import 'package:palestine_commercial_directory/core/utils/extensions.dart';
 
 class MySearchBar extends StatelessWidget {
   const MySearchBar({

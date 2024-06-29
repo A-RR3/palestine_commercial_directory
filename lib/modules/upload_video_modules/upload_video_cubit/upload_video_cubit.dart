@@ -4,11 +4,11 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:videos_application/core/utils/mixins/compress_video_mixin.dart';
-import 'package:videos_application/models/video_models/upload_video_model.dart';
-import 'package:videos_application/modules/upload_video_modules/upload_video_cubit/upload_video_states.dart';
-import 'package:videos_application/shared/network/remote/dio_helper.dart';
-import 'package:videos_application/shared/network/remote/end_points.dart';
+import 'package:palestine_commercial_directory/core/utils/mixins/compress_video_mixin.dart';
+import 'package:palestine_commercial_directory/models/video_models/upload_video_model.dart';
+import 'package:palestine_commercial_directory/modules/upload_video_modules/upload_video_cubit/upload_video_states.dart';
+import 'package:palestine_commercial_directory/shared/network/remote/dio_helper.dart';
+import 'package:palestine_commercial_directory/shared/network/remote/end_points.dart';
 
 // may convert to mixin
 
@@ -52,7 +52,10 @@ class UploadVideoCubit extends Cubit<UploadVideoStates>
   UploadVideoModel? uploadVideoModel;
 
   Future<void> addVideo(
-      {File? videoFile, required String title, required String content, int userId = 1}) async {
+      {File? videoFile,
+      required String title,
+      required String content,
+      int userId = 1}) async {
     emit(UploadVideoLoadingState());
     FormData formData = FormData.fromMap({
       if (videoFile != null)

@@ -1,13 +1,13 @@
 import 'package:easy_localization/easy_localization.dart' as easy hide LTR;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:videos_application/core/values/cache_keys.dart';
-import 'package:videos_application/core/values/lang_keys.dart';
-import 'package:videos_application/modules/admin/admin_screen.dart';
-import 'package:videos_application/modules/home/cubit/home_cubit.dart';
-import 'package:videos_application/modules/home/screens/home_screen_view.dart';
-import 'package:videos_application/modules/home/screens/owner_view.dart';
-import 'package:videos_application/shared/widgets/default_app_bar.dart';
+import 'package:palestine_commercial_directory/core/values/cache_keys.dart';
+import 'package:palestine_commercial_directory/core/values/lang_keys.dart';
+import 'package:palestine_commercial_directory/modules/admin/admin_screen.dart';
+import 'package:palestine_commercial_directory/modules/home/cubit/home_cubit.dart';
+import 'package:palestine_commercial_directory/modules/home/screens/home_screen_view.dart';
+import 'package:palestine_commercial_directory/modules/home/screens/owner_view.dart';
+import 'package:palestine_commercial_directory/shared/widgets/default_app_bar.dart';
 import '../../core/presentation/Palette.dart';
 import '../../core/values/constants.dart';
 import '../../shared/network/local/cache_helper.dart';
@@ -32,28 +32,33 @@ class HomeScreen extends StatelessWidget {
           builder: (context, state) {
             HomeCubit homeCubit = HomeCubit.get(context);
             bool isLogged = CacheHelper.getBool(CacheKeys.isLogged.name);
+            bool isCompanyOwner = homeCubit.user?.uRoleId == 1;
             print(isLogged);
-            return Scaffold(
-                key: _scaffoldKey,
-                drawer: CustomDrawer(cubit: homeCubit),
-                backgroundColor: (state is ChangeAppLangLoadingStateState)
-                    ? Colors.black54.withOpacity(.3)
-                    : Palette.scaffoldBackground,
-                appBar: DefaultAppBar(
-                  withDrawer: true,
-                  isHomePage: true,
-                  title: LangKeys.HOME_SCREEN.tr(),
-                ),
-                body: (state is ChangeAppLangLoadingStateState ||
-                        state is GetCurrentUserDataInitialState)
-                    ? const Center(child: CircularProgressIndicator())
-                    : (!isLogged)
-                        ? const HomeView()
-                        : homeCubit.user?.uRoleId == 1
-                            ? const AdminPanel()
-                            : CompanyOwnerView(
-                                userId: homeCubit.user?.uId,
-                              ));
+            return GestureDetector(
+              onTap: () => FocusScope.of(context).unfocus(),
+              child: Scaffold(
+                  key: _scaffoldKey,
+                  drawer: CustomDrawer(cubit: homeCubit),
+                  backgroundColor: (state is ChangeAppLangLoadingStateState)
+                      ? Colors.black54.withOpacity(.3)
+                      : Palette.scaffoldBackground,
+                  appBar: DefaultAppBar(
+                    withDrawer: true,
+                    isHomePage: true,
+                    isCompanyOwner: isCompanyOwner,
+                    title: LangKeys.HOME_SCREEN.tr(),
+                  ),
+                  body: (state is ChangeAppLangLoadingStateState ||
+                          state is GetCurrentUserDataInitialState)
+                      ? const Center(child: CircularProgressIndicator())
+                      : (!isLogged)
+                          ? const HomeView()
+                          : isCompanyOwner
+                              ? const AdminPanel()
+                              : CompanyOwnerView(
+                                  userId: homeCubit.user?.uId,
+                                )),
+            );
           },
         ));
   }

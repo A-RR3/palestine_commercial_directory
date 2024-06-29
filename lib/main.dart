@@ -2,11 +2,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:videos_application/core/localization/localization_settings.dart';
-import 'package:videos_application/modules/splash/splash_screen.dart';
-import 'package:videos_application/shared/network/remote/dio_helper.dart';
-import 'package:videos_application/permission_cubit/permission_cubit.dart';
-import 'package:videos_application/shared/network/remote/my_bloc_observer.dart';
+import 'package:palestine_commercial_directory/core/localization/localization_settings.dart';
+import 'package:palestine_commercial_directory/modules/splash/splash_screen.dart';
+import 'package:palestine_commercial_directory/shared/network/remote/dio_helper.dart';
+import 'package:palestine_commercial_directory/permission_cubit/permission_cubit.dart';
+import 'package:palestine_commercial_directory/shared/network/remote/my_bloc_observer.dart';
 
 import 'core/presentation/theme.dart';
 import 'core/values/cache_keys.dart';
@@ -25,8 +25,9 @@ void main() async {
 
   userToken = CacheHelper.getData(CacheKeys.token.name);
   userId = CacheHelper.getData(CacheKeys.userId.name);
-  // userRole = CacheHelper.getData(CacheKeys.userRole.name);
-  Locale startLocale = Locale(CacheHelper.getData(CacheKeys.lang.name));
+
+  Locale startLocale = Locale(CacheHelper.getData(CacheKeys.lang.name) ??
+      LocalizationSettings.defaultLanguage);
 
   runApp(EasyLocalization(
     supportedLocales: LocalizationSettings.localesList,

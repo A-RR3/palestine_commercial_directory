@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:videos_application/modules/auth/login/cubit/states.dart';
+import 'package:palestine_commercial_directory/modules/auth/login/cubit/states.dart';
 import '../../../../core/utils/mixins/password_mixin.dart';
 import '../../../../models/login_model.dart';
 import '../../../../models/test_data_model.dart';
@@ -14,8 +14,8 @@ class LoginCubit extends Cubit<LoginStates>
   static LoginCubit get(context) => BlocProvider.of(context);
 
   List data = [
-    TestDataModel(id: 2, phone: '0599887766', password: '12345'),
-    TestDataModel(id: 18, phone: '0592637611', password: '12345')
+    TestDataModel(id: 2, phone: '0592637688', password: '12345'),
+    TestDataModel(id: 18, phone: '0599887766', password: '12345')
   ];
 
   void selectUser(int id) {

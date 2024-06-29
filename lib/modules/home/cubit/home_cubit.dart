@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:videos_application/core/values/constants.dart';
-import 'package:videos_application/modules/admin/screens/users/cubit/users_cubit.dart';
-import 'package:videos_application/modules/home/cubit/home_states.dart';
+import 'package:palestine_commercial_directory/core/values/constants.dart';
+import 'package:palestine_commercial_directory/modules/admin/screens/users/cubit/users_cubit.dart';
+import 'package:palestine_commercial_directory/modules/home/cubit/home_states.dart';
 import '../../../../../core/utils/mixins/password_mixin.dart';
 import '../../../../../shared/network/remote/dio_helper.dart';
 import '../../../../../shared/network/remote/end_points.dart';

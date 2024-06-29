@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:videos_application/modules/admin/screens/companies/cubit/location_cubit.dart';
+import 'package:palestine_commercial_directory/modules/admin/screens/companies/cubit/location_cubit.dart';
 
 class GoogleMapWidget extends StatelessWidget {
   const GoogleMapWidget(

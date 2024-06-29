@@ -2,7 +2,7 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:videos_application/permission_cubit/permission_states.dart';
+import 'package:palestine_commercial_directory/permission_cubit/permission_states.dart';
 
 // convert to mixin
 // in utils/mixins folder

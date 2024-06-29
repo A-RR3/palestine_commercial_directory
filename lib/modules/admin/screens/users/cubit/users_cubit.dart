@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:videos_application/core/utils/mixins/cancel_token_mixin.dart';
-import 'package:videos_application/modules/admin/screens/users/cubit/states.dart';
+import 'package:palestine_commercial_directory/core/utils/mixins/cancel_token_mixin.dart';
+import 'package:palestine_commercial_directory/modules/admin/screens/users/cubit/states.dart';
 import '../../../../../core/values/constants.dart';
 import '../../../../../models/user_model.dart';
 import '../../../../../shared/network/remote/dio_helper.dart';

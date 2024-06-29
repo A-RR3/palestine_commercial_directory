@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:videos_application/core/utils/extensions.dart';
-import 'package:videos_application/core/values/constants.dart';
+import 'package:palestine_commercial_directory/core/utils/extensions.dart';
+import 'package:palestine_commercial_directory/core/values/constants.dart';
 
 import '../../../core/presentation/Palette.dart';
 import '../../../shared/widgets/custom_text_widget.dart';

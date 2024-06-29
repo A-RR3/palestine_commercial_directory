@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:videos_application/core/presentation/palette.dart';
+import 'package:palestine_commercial_directory/core/presentation/palette.dart';
 
 class CustomMaterialBotton extends StatelessWidget {
   final VoidCallback? onPressed;
@@ -33,8 +33,9 @@ class CustomMaterialBotton extends StatelessWidget {
       height: height ?? 50,
       disabledColor: Colors.black.withOpacity(.8),
       disabledTextColor: Colors.white.withOpacity(.8),
-      padding:
-          hasPadding ? const EdgeInsets.symmetric(horizontal: 20) : EdgeInsets.zero,
+      padding: hasPadding
+          ? const EdgeInsets.symmetric(horizontal: 20)
+          : EdgeInsets.zero,
       child: child,
     );
   }

@@ -1,11 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:videos_application/core/utils/extensions.dart';
-import 'package:videos_application/core/values/asset_keys.dart';
-import 'package:videos_application/core/values/cache_keys.dart';
-import 'package:videos_application/modules/auth/login/widgets/gradient_text_widget.dart';
-import 'package:videos_application/modules/home/home_screen.dart';
+import 'package:palestine_commercial_directory/core/utils/extensions.dart';
+import 'package:palestine_commercial_directory/core/values/asset_keys.dart';
+import 'package:palestine_commercial_directory/core/values/cache_keys.dart';
+import 'package:palestine_commercial_directory/modules/auth/login/widgets/gradient_text_widget.dart';
+import 'package:palestine_commercial_directory/modules/home/home_screen.dart';
 import '../../../core/presentation/fonts.dart';
 import '../../../core/utils/navigation_services.dart';
 import '../../../core/utils/validation_utils.dart';
@@ -43,10 +43,6 @@ class LoginScreen extends StatelessWidget {
                     key: CacheKeys.userId.name,
                     value: state.profileModel.user!.uId);
                 userId = state.profileModel.user!.uId;
-                await CacheHelper.setData(
-                    key: CacheKeys.userRole.name,
-                    value: state.profileModel.user!.uRoleId);
-                userRole = state.profileModel.user!.uRoleId;
                 showToast(
                     meg: state.profileModel.message!,
                     toastState: ToastStates.success);
@@ -88,7 +84,8 @@ class LoginScreen extends StatelessWidget {
                           height: deviceSize.height,
                           child: SingleChildScrollView(
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 0),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 0),
                               child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment: MainAxisAlignment.center,

@@ -1,4 +1,4 @@
-import 'package:videos_application/models/video_models/upload_video_model.dart';
+import 'package:palestine_commercial_directory/models/video_models/upload_video_model.dart';
 
 abstract class UploadVideoStates {}
 

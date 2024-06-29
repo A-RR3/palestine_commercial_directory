@@ -2,10 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:videos_application/core/presentation/Palette.dart';
-import 'package:videos_application/core/utils/extensions.dart';
-import 'package:videos_application/core/values/lang_keys.dart';
-import 'package:videos_application/models/company_model.dart';
+import 'package:palestine_commercial_directory/core/presentation/Palette.dart';
+import 'package:palestine_commercial_directory/core/utils/extensions.dart';
+import 'package:palestine_commercial_directory/core/values/lang_keys.dart';
+import 'package:palestine_commercial_directory/models/company_model.dart';
 
 import '../../../../../core/values/cache_keys.dart';
 import '../../../../../core/values/constants.dart';

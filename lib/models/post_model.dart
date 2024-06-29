@@ -1,6 +1,9 @@
-// import 'package:videos_application/models/user_model.dart';
+// import 'package:palestine_commercial_directory/models/user_model.dart';
 
 //model for used when create/update a post
+import 'package:palestine_commercial_directory/shared/network/local/cache_helper.dart';
+import '../core/values/cache_keys.dart';
+
 class SinglePostModel {
   final bool? status;
   final String? message;
@@ -31,8 +34,9 @@ class Post {
   final DateTime? updatedAt;
   final DateTime? createdAt;
   final int? pId;
-  final int? likesCount;
+  int likesCount;
   final User? user;
+  bool isLiked;
 
   Post(
       {this.pTitle,
@@ -45,27 +49,30 @@ class Post {
       this.updatedAt,
       this.createdAt,
       this.pId,
-      this.likesCount,
-      this.user});
+      required this.likesCount,
+      this.user,
+      this.isLiked = false});
+
+  bool isUserLogged = CacheHelper.getBool(CacheKeys.isLogged.name);
 
   factory Post.fromJson(Map<String, dynamic> json) => Post(
-        pId: json["p_id"],
-        pTitle: json["p_title"],
-        pContent: json["p_content"],
-        pContentAr: json["p_content_ar"],
-        pUserId: json["p_user_id"],
-        pType: json["p_type"],
-        pImage: json["p_image"],
-        pVideo: json["p_video"],
-        updatedAt: json["updated_at"] == null
-            ? null
-            : DateTime.parse(json["updated_at"]),
-        createdAt: json["created_at"] == null
-            ? null
-            : DateTime.parse(json["created_at"]),
-        likesCount: json["likes_count"] ?? 0,
-        user: User.fromJson(json["user"]),
-      );
+      pId: json["p_id"],
+      pTitle: json["p_title"],
+      pContent: json["p_content"],
+      pContentAr: json["p_content_ar"],
+      pUserId: json["p_user_id"],
+      pType: json["p_type"],
+      pImage: json["p_image"],
+      pVideo: json["p_video"],
+      updatedAt: json["updated_at"] == null
+          ? null
+          : DateTime.parse(json["updated_at"]),
+      createdAt: json["created_at"] == null
+          ? null
+          : DateTime.parse(json["created_at"]),
+      likesCount: json["likes_count"] ?? 0,
+      user: User.fromJson(json["user"]),
+      isLiked: json["is_liked"]);
 
   Map<String, dynamic> toJson() => {
         "p_id": pId,

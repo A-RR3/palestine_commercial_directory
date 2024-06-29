@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:videos_application/modules/videos_modules/video_card.dart';
-import 'package:videos_application/modules/videos_modules/videos_cubit/videos_cubit.dart';
-import 'package:videos_application/modules/videos_modules/videos_cubit/videos_states.dart';
-
+import 'package:palestine_commercial_directory/modules/videos_modules/video_card.dart';
+import 'package:palestine_commercial_directory/modules/videos_modules/videos_cubit/videos_cubit.dart';
+import 'package:palestine_commercial_directory/modules/videos_modules/videos_cubit/videos_states.dart';
 
 class VideoPlayerScreen extends StatelessWidget {
   const VideoPlayerScreen({super.key});

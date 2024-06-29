@@ -1,8 +1,8 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:video_player/video_player.dart';
-import 'package:videos_application/modules/home/cubit/posts_cubit/posts_states.dart';
-import 'package:videos_application/shared/network/remote/end_points.dart';
+import 'package:palestine_commercial_directory/modules/home/cubit/posts_cubit/posts_states.dart';
+import 'package:palestine_commercial_directory/shared/network/remote/end_points.dart';
 
 class VideoCubit extends Cubit<PostsStates> {
   VideoCubit() : super(PostsInitialState());

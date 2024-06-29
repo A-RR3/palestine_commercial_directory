@@ -59,7 +59,6 @@ class DioHelper {
   static Future<Response?> postData(
       {required String url,
       Object? data, //Map<String, dynamic>
-      // FormData? formData,
       Map<String, dynamic>? query,
       CancelToken? cancelToken,
       String? token,

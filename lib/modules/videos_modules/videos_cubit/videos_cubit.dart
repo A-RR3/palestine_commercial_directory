@@ -1,10 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:video_player/video_player.dart';
-import 'package:videos_application/models/basic_models/post_model.dart';
-import 'package:videos_application/models/video_models/get_videos_model.dart';
-import 'package:videos_application/modules/videos_modules/videos_cubit/videos_states.dart';
-import 'package:videos_application/shared/network/remote/dio_helper.dart';
-import 'package:videos_application/shared/network/remote/end_points.dart';
+import 'package:palestine_commercial_directory/models/basic_models/post_model.dart';
+import 'package:palestine_commercial_directory/models/video_models/get_videos_model.dart';
+import 'package:palestine_commercial_directory/modules/videos_modules/videos_cubit/videos_states.dart';
+import 'package:palestine_commercial_directory/shared/network/remote/dio_helper.dart';
+import 'package:palestine_commercial_directory/shared/network/remote/end_points.dart';
 
 class VideosCubit extends Cubit<VideosStates> {
   VideosCubit() : super(VideosInitialState());
@@ -12,7 +12,6 @@ class VideosCubit extends Cubit<VideosStates> {
   static VideosCubit get(context) => BlocProvider.of(context);
 
   GetVideosModel? getVideosModel;
-
 
   void getVideosData() {
     emit(GetVideosLoadingState());
@@ -60,7 +59,6 @@ class VideosCubit extends Cubit<VideosStates> {
   void playVideo(VideoPlayerController videoPlayerController) {
     videoPlayerController.play();
   }
-
 
   @override
   Future<void> close() {

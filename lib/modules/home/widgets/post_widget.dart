@@ -1,10 +1,11 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:videos_application/core/utils/extensions.dart';
-import 'package:videos_application/core/values/constants.dart';
-import 'package:videos_application/modules/home/cubit/posts_cubit/video_cubit.dart';
-import 'package:videos_application/shared/network/remote/end_points.dart';
+import 'package:palestine_commercial_directory/core/utils/extensions.dart';
+import 'package:palestine_commercial_directory/core/values/constants.dart';
+import 'package:palestine_commercial_directory/modules/home/cubit/posts_cubit/posts_cubit.dart';
+import 'package:palestine_commercial_directory/modules/home/cubit/posts_cubit/video_cubit.dart';
+import 'package:palestine_commercial_directory/shared/network/remote/end_points.dart';
 import '../../../core/values/cache_keys.dart';
 import '../../../models/post_model.dart';
 import '../../../shared/network/local/cache_helper.dart';
@@ -13,13 +14,20 @@ import '../cubit/posts_cubit/posts_states.dart';
 
 class PostWidget extends StatelessWidget {
   final Post post;
+  final PostsCubit postsCubit;
 
-  const PostWidget({super.key, required this.post});
+  PostWidget({
+    super.key,
+    required this.post,
+    required this.postsCubit,
+  });
 
   @override
   Widget build(BuildContext context) {
     bool isEnglish = CacheHelper.getData(CacheKeys.lang.name) == enCode;
+    bool isLogged = CacheHelper.getBool(CacheKeys.isLogged.name);
     return Card(
+      shadowColor: Colors.grey,
       margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
       child: Padding(
         padding: const EdgeInsets.all(10),
@@ -45,7 +53,7 @@ class PostWidget extends StatelessWidget {
             ),
             vSpace(),
             DefaultText(
-              text: isEnglish ? post.pContent! : post.pContentAr!,
+              text: post.pContent != null ? post.pContent! : '',
               style: context.textTheme.bodyMedium,
             ),
             vSpace(),
@@ -83,28 +91,54 @@ class PostWidget extends StatelessWidget {
                         ))
                     : const SizedBox(),
             vSpace(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    const Icon(Icons.thumb_up),
-                    const SizedBox(width: 5),
-                    Text('${post.likesCount} Likes'),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    const Icon(Icons.comment),
-                    const SizedBox(width: 5),
-                    Text('${post.likesCount} Comments'),
-                  ],
-                ),
-              ],
-            ),
+            !isLogged ? likeRow : toggleLikeRow
           ],
         ),
       ),
     );
   }
+
+  Widget get likeRow => Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              const Icon(Icons.thumb_up),
+              const SizedBox(width: 5),
+              Text('${post.likesCount} Likes'),
+            ],
+          ),
+          Row(
+            children: <Widget>[
+              const Icon(Icons.comment),
+              const SizedBox(width: 5),
+              Text('${post.likesCount} Comments'),
+            ],
+          ),
+        ],
+      );
+  Widget get toggleLikeRow => Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          GestureDetector(
+            onTap: () => postsCubit.toggleLikePost(post),
+            child: Row(
+              children: <Widget>[
+                Text('${post.likesCount}'),
+                hSpace(5),
+                const Icon(Icons.thumb_up),
+                hSpace(5),
+                post.isLiked ? Text('DisLike') : Text('Like')
+              ],
+            ),
+          ),
+          Row(
+            children: <Widget>[
+              const Icon(Icons.comment),
+              const SizedBox(width: 5),
+              Text('Comment'),
+            ],
+          ),
+        ],
+      );
 }

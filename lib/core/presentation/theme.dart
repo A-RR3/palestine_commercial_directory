@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:videos_application/core/presentation/fonts.dart';
+import 'package:palestine_commercial_directory/core/presentation/fonts.dart';
 import '../presentation/Palette.dart';
 
 ThemeData get lightTheme => ThemeData(

@@ -16,7 +16,7 @@
 
     <application
         android:usesCleartextTraffic="true"
-        android:label="videos_application"
+        android:label="palestine_commercial_directory"
         android:name="${applicationName}"
         android:enableOnBackInvokedCallback="true"
         android:icon="@mipmap/ic_launcher">

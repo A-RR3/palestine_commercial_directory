@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "423185378538",
+    "project_id": "todo-firebase-a1916",
+    "storage_bucket": "todo-firebase-a1916.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:423185378538:android:12d787f9f0a02211437b93",
+        "android_client_info": {
+          "package_name": "com.example.palestine_commercial_directory"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHTPO-b4jQ3Py_SD9jZRm4EoebsUSpUiQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
