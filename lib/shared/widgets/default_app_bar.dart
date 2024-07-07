@@ -57,37 +57,42 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         isHomePage
             ? !isLogged
-                ? SizedBox(
-                    width: context.deviceSize.width * .23,
-                    child: Center(
-                      child: CustomMaterialBotton(
-                        height: 25,
-                        onPressed: () {
-                          NavigationServices.navigateTo(
-                              context, const LoginScreen());
-                        },
-                        hasPadding: false,
-                        color: Palette.black.withOpacity(.2),
-                        child: Text(
-                          LangKeys.LOGIN.tr(),
-                          style: context.textTheme.headlineSmall!
-                              .copyWith(color: Colors.white, fontSize: 16),
-                        ),
-                      ),
-                    ))
-                : Row(
+                ? Row(
                     children: [
-                      BadgedContainer(
-                        onTap: () {},
-                        icon: Icon(
-                          Icons.notifications,
-                          size: 30,
-                        ),
-                      ),
-                      hSpace()
+                      SizedBox(
+                          width: context.deviceSize.width * .23,
+                          child: CustomMaterialBotton(
+                            height: 25,
+                            onPressed: () {
+                              NavigationServices.navigateTo(
+                                  context, const LoginScreen());
+                            },
+                            hasPadding: false,
+                            color: Palette.black.withOpacity(.2),
+                            child: Text(
+                              LangKeys.LOGIN.tr(),
+                              style: context.textTheme.headlineSmall!
+                                  .copyWith(color: Colors.white, fontSize: 16),
+                            ),
+                          )),
+                      hSpace(5)
                     ],
                   )
-            : SizedBox()
+                : isCompanyOwner
+                    ? Row(
+                        children: [
+                          BadgedContainer(
+                            onTap: () {},
+                            icon: const Icon(
+                              Icons.notifications,
+                              size: 30,
+                            ),
+                          ),
+                          hSpace()
+                        ],
+                      )
+                    : const SizedBox()
+            : const SizedBox()
       ],
     );
   }

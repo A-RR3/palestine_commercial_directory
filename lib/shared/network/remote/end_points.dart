@@ -16,10 +16,14 @@ const USERS_SEARCH = 'users/search';
 
 class EndPointsConstants {
   // static const String subBaseUrl = 'http://192.168.1.10/BFO/palestine_commercial_directory_laravel';
-  static const String subBaseUrl = 'http://192.168.1.23/laravel_project';
+  static const String subBaseUrl = 'http://192.168.1.26/laravel_project';
 
   static const String baseUrl = '$subBaseUrl/public/api/';
   static const String post = 'post';
+  static const String notifications = 'sendNotification';
+  static const String saveDeviceToken = 'save-device-token';
+  static const String removeDeviceToken = 'remove-device-token';
+  static const String updateDeviceToken = 'update-device-token';
 
   static const usersStorage = '$subBaseUrl/storage/app/public/users/images/';
   static const imagesStorage = '$subBaseUrl/storage/app/public/posts/images/';

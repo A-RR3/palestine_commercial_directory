@@ -27,10 +27,16 @@ class LoginScreen extends StatelessWidget {
     return BlocProvider(
       create: (BuildContext context) => LoginCubit(),
       child: BlocConsumer<LoginCubit, LoginStates>(
-        listener: (BuildContext context, LoginStates state) {
+        listener: (BuildContext context, LoginStates state) async {
           if (state is LoginSuccessState) {
             if (state.profileModel.status) {
               print(state.profileModel.token!);
+
+              if (state.profileModel.user!.uRoleId == 2) {
+                print('---------');
+                LoginCubit cubit = LoginCubit.get(context);
+                await cubit.saveDeviceToken(uId: state.profileModel.user!.uId!);
+              }
 
               CacheHelper.setData(
                       key: CacheKeys.token.name,

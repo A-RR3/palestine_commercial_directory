@@ -9,6 +9,7 @@ import 'package:palestine_commercial_directory/modules/admin/cubit/states.dart';
 import 'package:palestine_commercial_directory/shared/widgets/custom_text_widget.dart';
 import '../../core/presentation/Palette.dart';
 import '../../core/values/lang_keys.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 List<String> adminOptions = [
   LangKeys.users,
@@ -63,13 +64,24 @@ class AdminPanel extends StatelessWidget {
                                     size: 26,
                                   ),
                                   vSpace(),
-                                  DefaultText(
-                                    text: adminOptions[index].tr(),
-                                    style: context.textTheme.labelSmall!
-                                        .copyWith(
-                                            color: Palette.border,
-                                            fontSize: 19),
+                                  FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    child: AutoSizeText(
+                                      adminOptions[index].tr(),
+                                      style: context.textTheme.labelSmall!
+                                          .copyWith(
+                                              color: Palette.border,
+                                              fontSize: 17),
+                                      maxLines: 1,
+                                    ),
                                   ),
+                                  // DefaultText(
+                                  //   text:
+                                  //   style: context.textTheme.labelSmall!
+                                  //       .copyWith(
+                                  //           color: Palette.border,
+                                  //           fontSize: 19),
+                                  // ),
                                 ],
                               )),
                         ),

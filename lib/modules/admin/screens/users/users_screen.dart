@@ -72,20 +72,18 @@ class UsersScreen extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: TabBarView(children: [
-                            (usersCubit.isActiveUsersLoading)
-                                ? const SizedBox()
-                                : (usersCubit.activeUsers.isEmpty)
-                                    ? noUsersFoundWidget
-                                    : ListViewWithController(
-                                        isActiveList: true,
-                                      ),
-                            (usersCubit.isNonActiveUsersLoading)
-                                ? const SizedBox()
-                                : (usersCubit.archivedUsers.isEmpty)
-                                    ? noUsersFoundWidget
-                                    : ListViewWithController(
-                                        isActiveList: false,
-                                      ),
+                            (usersCubit.activeUsers.isEmpty &&
+                                    !usersCubit.isActiveUsersLoading)
+                                ? noUsersFoundWidget
+                                : ListViewWithController(
+                                    isActiveList: true,
+                                  ),
+                            (usersCubit.archivedUsers.isEmpty &&
+                                    !usersCubit.isNonActiveUsersLoading)
+                                ? noUsersFoundWidget
+                                : ListViewWithController(
+                                    isActiveList: false,
+                                  ),
                           ]),
                         ),
                       ),
@@ -106,6 +104,7 @@ class UsersScreen extends StatelessWidget {
   Widget getTap(String title) => Tab(
         child: DefaultText(
           text: title,
+          color: Colors.black87,
         ),
       );
 }

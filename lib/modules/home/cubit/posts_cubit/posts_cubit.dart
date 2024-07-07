@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,7 +35,7 @@ class PostsCubit extends Cubit<PostsStates> {
   Future<void> getPosts() async {
     emit(FetchPostsLoadingState());
     await DioHelper.getData(
-      url: '${EndPointsConstants.posts}',
+      url: EndPointsConstants.posts,
       data: {
         "per_page": perPage,
         "page": pageNmber,
@@ -63,7 +62,7 @@ class PostsCubit extends Cubit<PostsStates> {
     emit(FetchPostsLoadingState());
 
     await DioHelper.getData(
-      url: '${EndPointsConstants.posts}/user/${userId}',
+      url: '${EndPointsConstants.posts}/user/$userId',
       data: {
         "per_page": perPage,
         "page": pageNmber,
@@ -108,7 +107,7 @@ class PostsCubit extends Cubit<PostsStates> {
 
   void createPost(XFile? imageFile, String? mediaType, MediaInfo? mediaInfo,
       String contentEn) async {
-    print('inside post${mediaInfo}');
+    print('inside post$mediaInfo');
     print(mediaType);
     emit(CreatePostLoadingState());
     FormData? formData;
@@ -120,9 +119,9 @@ class PostsCubit extends Cubit<PostsStates> {
         "p_content_ar": 'الترجمة بالعربي',
         "p_user_id": userId!,
         "p_image": await MultipartFile.fromFile(imageFile!.path,
-            filename: imageFile!.name,
+            filename: imageFile.name,
             contentType: MediaType.parse(
-                imageFile!.mimeType ?? 'application/octet-stream')),
+                imageFile.mimeType ?? 'application/octet-stream')),
       });
     } else if (mediaType == 'video') {
       print('is video');

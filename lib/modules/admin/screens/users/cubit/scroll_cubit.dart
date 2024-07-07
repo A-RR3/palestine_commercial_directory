@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:palestine_commercial_directory/core/utils/extensions.dart';
 
 // abstract class ScrollStates {}
 //

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:palestine_commercial_directory/core/utils/extensions.dart';
 import 'package:palestine_commercial_directory/core/values/cache_keys.dart';
 import 'package:palestine_commercial_directory/permission_cubit/permission_cubit.dart';
 
@@ -39,7 +38,7 @@ class CompanyOwnerView extends StatelessWidget {
           builder: (context, state) {
             PostsCubit postsCubit = PostsCubit.get(context);
             List<Post> posts = postsCubit.posts;
-            FocusScopeNode _focusScopNode = FocusScopeNode();
+            FocusScopeNode focusScopNode = FocusScopeNode();
 
             if (state is FetchPostsLoadingState && posts.isEmpty) {
               return const Center(
@@ -62,7 +61,7 @@ class CompanyOwnerView extends StatelessWidget {
                   behavior: HitTestBehavior.opaque,
                   onTap: () {
                     // Unfocus the text field when tapping outside
-                    _focusScopNode.unfocus();
+                    focusScopNode.unfocus();
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(top: 8.0),
@@ -72,11 +71,11 @@ class CompanyOwnerView extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          PostScreen(postsCubit, _focusScopNode),
+                          PostScreen(postsCubit, focusScopNode),
                           vSpace(20),
                           ListView.builder(
                             shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
+                            physics: const NeverScrollableScrollPhysics(),
                             // controller: scrollCubit.scrollController,
                             itemCount:
                                 posts.length + (postsCubit.isLastPage ? 0 : 1),

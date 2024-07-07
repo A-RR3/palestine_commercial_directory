@@ -2,7 +2,7 @@ import 'package:palestine_commercial_directory/models/pagination_model.dart';
 import 'company_model.dart';
 
 class UserModel {
-  final int? status;
+  final bool? status;
   final List<User>? users;
   final Pagination? pagination;
 
@@ -58,10 +58,20 @@ class User {
       createdAt: DateTime.parse(json["created_at"]),
       updatedAt: DateTime.parse(json["updated_at"]),
       companiesCount: json["companies_count"],
-      companies: json["companies"] == null
-          ? []
-          : List<CompanyModel>.from(
-              json["companies"]!.map((x) => CompanyModel.fromJson(x))));
+      companies: []);
+
+  // factory User.fromJson(Map<String, dynamic> json) => User(
+  //     uId: 2,
+  //     uPhone: "0599887766",
+  //     uNameAr: "اروى",
+  //     uName: "arwa arafeh",
+  //     uRoleId: 2,
+  //     uStatus: true,
+  //     createdAt: DateTime.parse(json["created_at"]),
+  //     updatedAt: DateTime.parse(json["updated_at"]),
+  //     uImage: "1719061821_6676cd3d21bf4.jpg",
+  //     companiesCount: 2,
+  //     companies: []);
 
   Map<String, dynamic> toJson() => {
         "u_id": uId,

@@ -1,6 +1,3 @@
-
-
-
 class CompanyModel {
   final int? cId;
   final int? cOwnerId;

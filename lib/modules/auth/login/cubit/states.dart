@@ -21,3 +21,15 @@ class ChangePasswordVisibilityState extends LoginStates {}
 class ChangeLoginButtonDisabledState extends LoginStates {}
 
 class SelectUserTestDataState extends LoginStates {}
+
+class SaveDeviceTokenInitialState extends LoginStates {}
+
+class SaveDeviceTokenSuccessState extends LoginStates {}
+
+class SaveDeviceTokenErrorState extends LoginStates {}
+
+class RemoveDeviceTokenInitialState extends LoginStates {}
+
+class RemoveDeviceTokenSuccessState extends LoginStates {}
+
+class RemoveDeviceTokenErrorState extends LoginStates {}

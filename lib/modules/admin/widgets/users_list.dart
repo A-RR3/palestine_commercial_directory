@@ -104,7 +104,7 @@ class _ListViewWithControllerState extends State<ListViewWithController> {
                                 ? const Center(
                                     child: CircularProgressIndicator(),
                                   )
-                                : vSpace();
+                                : vSpace(20);
                           }
                         },
                         itemCount: (widget.isActiveList
@@ -154,31 +154,30 @@ class _ListViewWithControllerState extends State<ListViewWithController> {
         FocusScope.of(context).unfocus();
         Future.delayed(
           const Duration(milliseconds: 700),
-          () => dialogScreen(context, user),
+          () => companiesScreen(context, user),
         );
       },
       minTileHeight: 80,
       contentPadding: const EdgeInsets.symmetric(horizontal: 15),
-      trailing: IconButton(
-          onPressed: () {
-            widget.isActiveList
-                ? confirmationDialog(context, widget.isActiveList,
-                    () => cubit.changeUserStatus(user.uId!, index))
-                : confirmationDialog(
-                    context,
-                    widget.isActiveList,
-                    () => cubit.changeUserStatus(user.uId!, index,
-                        isActive: false));
-          },
-          icon: widget.isActiveList
-              ? const Icon(
-                  Icons.delete,
-                  color: Colors.red,
-                )
-              : Icon(
-                  Icons.delete_forever_outlined,
-                  color: widget.isActiveList ? Colors.red : Colors.green,
-                )),
+      trailing: TextButton(
+        onPressed: () {
+          widget.isActiveList
+              ? confirmationDialog(context, widget.isActiveList,
+                  () => cubit.changeUserStatus(user.uId!, index))
+              : confirmationDialog(
+                  context,
+                  widget.isActiveList,
+                  () => cubit.changeUserStatus(user.uId!, index,
+                      isActive: false));
+        },
+        child: DefaultText(
+          text: widget.isActiveList ? 'Deactivate' : 'Activate',
+          style: TextStyle(
+            color: widget.isActiveList ? Colors.red : Colors.green,
+            fontSize: 15,
+          ),
+        ),
+      ),
     );
   }
 
@@ -189,11 +188,11 @@ class _ListViewWithControllerState extends State<ListViewWithController> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: isActivate
-              ? const Text('Confirm Activation')
-              : const Text('Confirm Deactivation'),
+              ? const Text('Confirm deactivation')
+              : const Text('Confirm Activation'),
           content: isActivate
-              ? const Text('Are you sure you want to activate this user?')
-              : const Text('Are you sure you want to deactivate this user?'),
+              ? const Text('Are you sure you want to deactivate this user?')
+              : const Text('Are you sure you want to activate this user?'),
           actions: <Widget>[
             TextButton(
               onPressed: () {
@@ -214,7 +213,7 @@ class _ListViewWithControllerState extends State<ListViewWithController> {
     );
   }
 
-  dialogScreen(BuildContext context, User user) async {
+  companiesScreen(BuildContext context, User user) async {
     await showDialog(
       context: context,
       builder: (context) {
@@ -247,14 +246,15 @@ class _ListViewWithControllerState extends State<ListViewWithController> {
                       width: context.deviceSize.width * .7,
                       child: Center(
                           child: ListView.separated(
-                              itemBuilder: (context, companyIndex) {
-                                return Text(
-                                  user.companies![companyIndex].cName!,
-                                  style: context.textTheme.bodyLarge,
-                                );
-                              },
-                              separatorBuilder: (context, index) => myDivider,
-                              itemCount: user.companiesCount!))),
+                        itemCount: user.companiesCount!,
+                        itemBuilder: (context, index) {
+                          return Text(
+                            user.companies![index].cName!,
+                            style: context.textTheme.bodyLarge,
+                          );
+                        },
+                        separatorBuilder: (context, index) => myDivider,
+                      ))),
                 ]),
           ),
         );

@@ -12,6 +12,7 @@ int? userRole;
 bool? isLogged;
 String? userImage;
 String? userName;
+String? deviceToken;
 
 Locale? appLocale;
 
@@ -47,7 +48,7 @@ void showToast(
           ? Colors.red
           : toastState == ToastStates.success
               ? Colors.green
-              : Color(0xffE4CF03),
+              : const Color(0xffE4CF03),
       textColor: color ?? Colors.white,
       fontSize: 16.0);
 }

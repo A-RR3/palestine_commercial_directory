@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:palestine_commercial_directory/core/utils/extensions.dart';
 
 class BadgedContainer extends StatelessWidget {
   const BadgedContainer({super.key, required this.icon, this.onTap});
@@ -9,14 +8,15 @@ class BadgedContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Badge(
+      backgroundColor: Colors.red,
       smallSize: 0,
       largeSize: 20,
-      offset: Offset(-2, 2),
-      label: Text('5',
+      offset: const Offset(-2, 2),
+      label: const Text('5',
           style: TextStyle(
             fontSize: 14,
           )),
-      padding: EdgeInsets.only(right: 5, left: 5, bottom: 1, top: 0),
+      padding: const EdgeInsets.only(right: 5, left: 5, bottom: 1, top: 0),
       alignment: Alignment.topRight,
       child: InkWell(
         onTap: onTap,

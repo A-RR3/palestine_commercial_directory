@@ -125,4 +125,33 @@ class DioHelper {
     }
     return null;
   }
+
+  static Future<Response?> deleteData(
+      {required String url, Object? data}) async {
+    dio.options.headers = {
+      'Content-Type': 'application/json',
+    };
+
+    try {
+      final response = await dio.delete(
+        url,
+        data: data,
+      );
+      return response;
+    } on DioException catch (e) {
+      if (e.response != null) {
+        print('response is not null');
+        print(e.response?.data);
+        print(e.response?.statusCode);
+        print(e.response?.statusMessage);
+        return e.response;
+      } else {
+        print('response is null');
+        print(e.requestOptions);
+        print(e.message);
+        print(e.error);
+      }
+    }
+    return null;
+  }
 }

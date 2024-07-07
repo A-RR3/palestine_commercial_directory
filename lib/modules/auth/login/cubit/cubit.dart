@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:palestine_commercial_directory/core/values/constants.dart';
 import 'package:palestine_commercial_directory/modules/auth/login/cubit/states.dart';
 import '../../../../core/utils/mixins/password_mixin.dart';
 import '../../../../models/login_model.dart';
@@ -55,9 +56,39 @@ class LoginCubit extends Cubit<LoginStates>
     });
   }
 
-  // VoidCallback? isLogInButtonDisabled(BuildContext context) {
-  //   return
-  // }
+  Future<void> saveDeviceToken({
+    required int uId,
+  }) async {
+    emit(SaveDeviceTokenInitialState());
+    print(deviceToken);
+    await DioHelper.postData(url: EndPointsConstants.saveDeviceToken, data: {
+      'd_user_id': userId,
+      'device_token': deviceToken,
+    }).then((value) {
+      print(value);
+      emit(SaveDeviceTokenSuccessState());
+    }).catchError((error) {
+      emit(SaveDeviceTokenErrorState());
+    });
+  }
+
+  Future<void> removeDeviceToken({
+    required int uId,
+  }) async {
+    emit(RemoveDeviceTokenInitialState());
+    print(deviceToken);
+    await DioHelper.deleteData(
+        url: EndPointsConstants.removeDeviceToken,
+        data: {
+          'd_user_id': userId,
+          'device_token': deviceToken,
+        }).then((value) {
+      print(value?.data);
+      emit(RemoveDeviceTokenSuccessState());
+    }).catchError((error) {
+      emit(RemoveDeviceTokenErrorState());
+    });
+  }
 
   @override
   Future<void> close() {

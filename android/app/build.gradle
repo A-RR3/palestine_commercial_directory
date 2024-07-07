@@ -1,8 +1,20 @@
+
 plugins {
     id "com.android.application"
-    id "kotlin-android"
+//    id "kotlin-android"
+    id 'org.jetbrains.kotlin.android'
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
+    id "com.google.gms.google-services"
+}
+
+dependencies {
+    // Import the Firebase BoM
+    implementation platform('com.google.firebase:firebase-bom:33.1.1')
+    // Add Firebase Cloud Messaging for notifications
+    implementation 'com.google.firebase:firebase-messaging'
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.auth:google-auth-library-oauth2-http:1.19.0'
 }
 
 def localProperties = new Properties()
@@ -23,11 +35,21 @@ if (flutterVersionName == null) {
     flutterVersionName = "1.0"
 }
 
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
 android {
     namespace = "com.example.palestine_commercial_directory"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
+    packagingOptions {
+        exclude("META-INF/DEPENDENCIES")
+
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -44,15 +66,40 @@ android {
         versionName = flutterVersionName
     }
 
+//    signingConfigs {
+//        release {
+//            println "Key Alias: " + keystoreProperties['MY_KEY_ALIAS']
+//            println "Key Password: " + keystoreProperties['MY_KEY_PASSWORD']
+//            println "Store File: " + keystoreProperties['MY_STORE_FILE']
+//            println "Store Password: " + keystoreProperties['MY_STORE_PASSWORD']
+//            keyAlias keystoreProperties['MY_KEY_ALIAS']
+//            keyPassword keystoreProperties['MY_KEY_PASSWORD']
+//            storePassword keystoreProperties['MY_STORE_PASSWORD']
+//            storeFile file(MY_KEYSTORE)
+
+//            storeFile file(keystoreProperties['MY_KEYSTORE'])
+//        }
+//    }
+
+    lintOptions {
+        baseline file("lint-baseline.xml")
+    }
+
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
+//            signingConfig signingConfigs.release
+//            minifyEnabled false
+//            shrinkResources false
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//             Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig = signingConfigs.debug
         }
+
     }
 }
 
 flutter {
     source = "../.."
 }
+

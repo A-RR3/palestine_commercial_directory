@@ -21,8 +21,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => HomeCubit()
-          ..getSingleUserById(CacheHelper.getData(CacheKeys.userId.name)),
+        create: (context) => HomeCubit()..getSingleUserById(userId),
         child: BlocConsumer<HomeCubit, HomeStates>(
           listener: (context, state) {
             if (state is UserLoggedOutSuccessfully) {
@@ -32,7 +31,7 @@ class HomeScreen extends StatelessWidget {
           builder: (context, state) {
             HomeCubit homeCubit = HomeCubit.get(context);
             bool isLogged = CacheHelper.getBool(CacheKeys.isLogged.name);
-            bool isCompanyOwner = homeCubit.user?.uRoleId == 1;
+            bool isCompanyOwner = homeCubit.user?.uRoleId == 2;
             print(isLogged);
             return GestureDetector(
               onTap: () => FocusScope.of(context).unfocus(),
@@ -54,10 +53,10 @@ class HomeScreen extends StatelessWidget {
                       : (!isLogged)
                           ? const HomeView()
                           : isCompanyOwner
-                              ? const AdminPanel()
-                              : CompanyOwnerView(
+                              ? CompanyOwnerView(
                                   userId: homeCubit.user?.uId,
-                                )),
+                                )
+                              : const AdminPanel()),
             );
           },
         ));

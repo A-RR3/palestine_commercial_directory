@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:palestine_commercial_directory/core/utils/extensions.dart';
 
+import '../../core/presentation/Palette.dart';
+
 class MySearchBar extends StatelessWidget {
   const MySearchBar({
     super.key,
@@ -26,7 +28,8 @@ class MySearchBar extends StatelessWidget {
           decoration: InputDecoration(
               focusedBorder: InputBorder.none,
               enabledBorder: InputBorder.none,
-              hintStyle: context.textTheme.headlineSmall,
+              hintStyle:
+                  context.textTheme.bodyMedium!.copyWith(color: Palette.border),
               contentPadding: const EdgeInsets.symmetric(vertical: 10),
               hintText: hint,
               hintMaxLines: 1,

@@ -3,11 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:palestine_commercial_directory/modules/admin/screens/users/cubit/scroll_cubit.dart';
 import 'package:palestine_commercial_directory/modules/home/cubit/posts_cubit/posts_cubit.dart';
 import 'package:palestine_commercial_directory/modules/home/cubit/posts_cubit/posts_states.dart';
+import 'package:palestine_commercial_directory/shared/widgets/custom_text_widget.dart';
 
-import '../../../core/values/cache_keys.dart';
 import '../../../core/values/constants.dart';
 import '../../../models/post_model.dart';
-import '../../../shared/network/local/cache_helper.dart';
+import '../widgets/carousel_slider_widget.dart';
 import '../widgets/post_widget.dart';
 
 class HomeView extends StatelessWidget {
@@ -43,24 +43,39 @@ class HomeView extends StatelessWidget {
               builder: (context, scrollState) {
                 ScrollCubit scrollCubit = ScrollCubit.get(context);
 
-                return ListView.builder(
-                  controller: scrollCubit.scrollController,
-                  itemCount: posts.length + (postsCubit.isLastPage ? 0 : 1),
-                  itemBuilder: (context, index) {
-                    if (index < posts.length) {
-                      return PostWidget(
-                        post: posts[index],
-                        postsCubit: postsCubit,
-                      );
-                    } else {
-                      return postsCubit.hasMore
-                          ? const Center(
-                              child: CircularProgressIndicator(),
-                            )
-                          : vSpace();
-                    }
-                  },
-                );
+                return Padding(
+                    padding: const EdgeInsets.all(1),
+                    child: SingleChildScrollView(
+                      controller: scrollCubit.scrollController,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          CaroaselSlider(),
+                          vSpace(20),
+                          const DefaultText(text: 'All Posts'),
+                          ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount:
+                                posts.length + (postsCubit.isLastPage ? 0 : 1),
+                            itemBuilder: (context, index) {
+                              if (index < posts.length) {
+                                return PostWidget(
+                                  post: posts[index],
+                                  postsCubit: postsCubit,
+                                );
+                              } else {
+                                return postsCubit.hasMore
+                                    ? const Center(
+                                        child: CircularProgressIndicator(),
+                                      )
+                                    : vSpace();
+                              }
+                            },
+                          )
+                        ],
+                      ),
+                    ));
               },
             );
           },

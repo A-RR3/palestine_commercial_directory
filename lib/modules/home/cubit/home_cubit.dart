@@ -11,6 +11,7 @@ import '../../../core/utils/navigation_services.dart';
 import '../../../core/values/cache_keys.dart';
 import '../../../models/user_model.dart';
 import '../../../shared/network/local/cache_helper.dart';
+import '../../auth/login/cubit/cubit.dart';
 
 class HomeCubit extends Cubit<HomeStates>
     with PasswordVisibilityMixin<HomeStates> {
@@ -30,6 +31,10 @@ class HomeCubit extends Cubit<HomeStates>
     await CacheHelper.setData(key: CacheKeys.isLogged.name, value: false);
     await CacheHelper.removeData(CacheKeys.userRole.name);
     await CacheHelper.removeData(CacheKeys.userId.name);
+
+    LoginCubit loginC = LoginCubit();
+    await loginC.removeDeviceToken(uId: userId!);
+
     await DioHelper.postData(url: LOGOUT, token: userToken).then((res) {
       Map data = res?.data;
       String message = data["message"];

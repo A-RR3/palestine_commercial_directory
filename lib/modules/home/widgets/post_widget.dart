@@ -16,7 +16,7 @@ class PostWidget extends StatelessWidget {
   final Post post;
   final PostsCubit postsCubit;
 
-  PostWidget({
+  const PostWidget({
     super.key,
     required this.post,
     required this.postsCubit,
@@ -128,14 +128,14 @@ class PostWidget extends StatelessWidget {
                 hSpace(5),
                 const Icon(Icons.thumb_up),
                 hSpace(5),
-                post.isLiked ? Text('DisLike') : Text('Like')
+                post.isLiked ? const Text('DisLike') : const Text('Like')
               ],
             ),
           ),
-          Row(
+          const Row(
             children: <Widget>[
-              const Icon(Icons.comment),
-              const SizedBox(width: 5),
+              Icon(Icons.comment),
+              SizedBox(width: 5),
               Text('Comment'),
             ],
           ),

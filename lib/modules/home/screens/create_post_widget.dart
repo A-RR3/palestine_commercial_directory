@@ -16,11 +16,13 @@ import '../../../shared/network/remote/end_points.dart';
 import '../../../shared/widgets/custom_material_botton_widget.dart';
 import '../../../shared/widgets/custom_text_widget.dart';
 
+enum MediaType { image, video }
+
 class PostScreen extends StatefulWidget {
   PostsCubit postsCubit;
   FocusScopeNode? focusNode;
   // String userImage;
-  PostScreen(this.postsCubit, this.focusNode);
+  PostScreen(this.postsCubit, this.focusNode, {super.key});
   @override
   _PostScreenState createState() => _PostScreenState();
 }
@@ -42,15 +44,13 @@ class _PostScreenState extends State<PostScreen> {
 
   @override
   void initState() {
-    print('init sate');
     _picker = ImagePicker();
     _focusNode = FocusNode();
-    _focusScopeNode = this._focusScopeNode;
+    _focusScopeNode = _focusScopeNode;
 
     _subscription = VideoCompress.compressProgress$.subscribe((progress) {
       setState(() {
         this.progress = progress;
-        print('ww---\n');
       });
     });
     homeCubit = HomeCubit.get(context);
@@ -59,7 +59,6 @@ class _PostScreenState extends State<PostScreen> {
 
   @override
   void dispose() {
-    print('dispose');
     _contentArController.dispose();
     _contentController.dispose();
     _focusNode?.dispose();
@@ -78,10 +77,10 @@ class _PostScreenState extends State<PostScreen> {
     super.didChangeDependencies();
   }
 
-  // String? compressedVideoPath;
+  // String?m compressedVideoPath;
 
   Future showLoadingDialog() => showDialog(
-        context: this.context,
+        context: context,
         barrierDismissible: false,
         builder: (context) {
           return Dialog(child: ProgressDialogWidget);
@@ -91,8 +90,9 @@ class _PostScreenState extends State<PostScreen> {
   Future<void> compressVideo(File videoFile) async {
     print('original file path: ${videoFile.path}');
 
+    ///data/user/0/com.example.palestine_commercial_directory/cache/a3a671c3-50d7-4512-8355-080eb00fbd83/VID_20170224_163404.mpeg
+
     showLoadingDialog();
-    await VideoCompress.deleteAllCache();
     await VideoCompress.setLogLevel(0);
     try {
       await VideoCompress.compressVideo(
@@ -101,25 +101,31 @@ class _PostScreenState extends State<PostScreen> {
         deleteOrigin: false,
         includeAudio: true,
       ).then((value) {
+        mediaInfo = value;
         setState(() {
           isCompressing = false;
-          mediaInfo = value;
         });
-        print('_mediaType$_mediaType');
-        print('final path after compress: ${mediaInfo?.path}');
+        setState(() {
+          _mediaType = 'video';
+        });
+
+        print(
+            'final path after compress: ${mediaInfo?.path}'); // /storage/emulated/0/Android/data/com.example.palestine_commercial_directory/files/video_compress/VID_2024-07-07 07-18-25-1011837909.mp4
       }).catchError((error) {
         VideoCompress.cancelCompression();
         debugPrint(error.toString());
       });
     } finally {
-      print('image$_mediaImage\ntype:$_mediaType\nmediaInfo:$mediaInfo');
-      NavigationServices.back(this.context);
+      print(
+          'image$_mediaImage\ntype:$_mediaType\nmediaInfo:$mediaInfo'); //null null instance
+      NavigationServices.back(context);
     }
   }
 
   Future<void> _pickMedia(
       ImageSource source, String mediaType, BuildContext context) async {
     //pick Xfile
+    await VideoCompress.deleteAllCache();
     final pickedFile = await (mediaType == 'image'
         ? _picker?.pickImage(
             source: source, maxWidth: 400, maxHeight: 400, imageQuality: 50)
@@ -128,14 +134,17 @@ class _PostScreenState extends State<PostScreen> {
     if (pickedFile != null) {
       if (mediaType == 'video') {
         print('file path${pickedFile.path}');
+
+        ///data/user/0/com.example.palestine_commercial_directory/cache/a3a671c3-50d7-4512-8355-080eb00fbd83/VID_20170224_163404.mpeg
+
         await compressVideo(File(pickedFile.path));
         print('compressed');
       } else {
         _mediaImage = pickedFile;
+        setState(() {
+          _mediaType = mediaType;
+        });
       }
-      setState(() {
-        _mediaType = mediaType;
-      });
     } else {
       _mediaType = null;
     }
@@ -195,7 +204,7 @@ class _PostScreenState extends State<PostScreen> {
                               controller: _contentController,
                               onChanged: (value) =>
                                   _contentController.text = value,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 hintText: "What's on your mind?",
                                 border: InputBorder.none,
                               ),
@@ -205,13 +214,12 @@ class _PostScreenState extends State<PostScreen> {
                         ],
                       ),
                       vSpace(10),
-                      if (_mediaImage != null)
-                        _mediaType == 'image'
-                            // ? Image.file(File(_mediaImage!.path))
-                            ? Text(_mediaImage!.path.split('/').last)
-                            : _mediaType == 'video'
-                                ? Text('Video selected: ${mediaInfo!.path!}')
-                                : Text(''),
+                      _mediaType == 'image'
+                          // ? Image.file(File(_mediaImage!.path))
+                          ? Text(_mediaImage!.path.split('/').last)
+                          : _mediaType == 'video'
+                              ? Text(mediaInfo!.path!.split('/').last)
+                              : const Text(''),
                       Divider(thickness: 1, color: Colors.grey[300]),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -227,7 +235,7 @@ class _PostScreenState extends State<PostScreen> {
                                   functionWhenGranted: () => _pickMedia(
                                       ImageSource.gallery, 'image', context));
                             },
-                            icon: Icon(Icons.photo, color: Colors.green),
+                            icon: const Icon(Icons.photo, color: Colors.green),
                             label: DefaultText(
                               text: 'image',
                               style: context.textTheme.headlineSmall!
@@ -245,7 +253,8 @@ class _PostScreenState extends State<PostScreen> {
                                   functionWhenGranted: () => _pickMedia(
                                       ImageSource.gallery, 'video', context));
                             },
-                            icon: Icon(Icons.video_call, color: Colors.red),
+                            icon:
+                                const Icon(Icons.video_call, color: Colors.red),
                             label: DefaultText(
                               text: 'Video',
                               style: context.textTheme.headlineSmall!
@@ -284,11 +293,11 @@ class _PostScreenState extends State<PostScreen> {
 
   Widget get ProgressDialogWidget {
     return Padding(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
+          const Text(
             'Compressing Video ...',
             style: TextStyle(fontSize: 20),
           ),
@@ -300,7 +309,7 @@ class _PostScreenState extends State<PostScreen> {
           vSpace(16),
           ElevatedButton(
               onPressed: () => VideoCompress.cancelCompression(),
-              child: Text('Cancel'))
+              child: const Text('Cancel'))
         ],
       ),
     );

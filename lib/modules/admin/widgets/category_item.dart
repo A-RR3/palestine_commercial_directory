@@ -1,5 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:transparent_image/transparent_image.dart';
 import 'package:palestine_commercial_directory/core/utils/extensions.dart';
 import 'package:palestine_commercial_directory/core/values/constants.dart';
 import 'package:palestine_commercial_directory/models/categories_model.dart';
@@ -31,18 +31,27 @@ class CategoryItem extends StatelessWidget {
           fit: StackFit.expand,
           children: [
             ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: FadeInImage.memoryNetwork(
-                  placeholder: kTransparentImage,
-                  image: category.cImage!,
-                  imageErrorBuilder: (BuildContext context, Object error,
-                      StackTrace? stackTrace) {
-                    return Center(
-                      child: Container(color: Colors.blueGrey),
-                    );
-                  },
-                  fit: BoxFit.cover,
-                )),
+              borderRadius: BorderRadius.circular(20),
+              child: CachedNetworkImage(
+                imageUrl: category.cImage!,
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+                fit: BoxFit.cover,
+              ),
+              // FadeInImage.memoryNetwork(
+              //   placeholder: kTransparentImage,
+              //   image: category.cImage!,
+              //   imageErrorBuilder: (BuildContext context, Object error,
+              //       StackTrace? stackTrace) {
+              //     return Center(
+              //       child: Container(
+              //         color: Colors.blueGrey,
+              //         child: Placeholder(),
+              //       ),
+              //     );
+              //   },
+              //   fit: BoxFit.cover,
+              // )
+            ),
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
