@@ -75,13 +75,6 @@ class AdminPanel extends StatelessWidget {
                                       maxLines: 1,
                                     ),
                                   ),
-                                  // DefaultText(
-                                  //   text:
-                                  //   style: context.textTheme.labelSmall!
-                                  //       .copyWith(
-                                  //           color: Palette.border,
-                                  //           fontSize: 19),
-                                  // ),
                                 ],
                               )),
                         ),
